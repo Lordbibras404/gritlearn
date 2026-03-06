@@ -15,6 +15,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Cairo'
 .screen.active{display:flex}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .content{flex:1;overflow-y:auto;padding-bottom:80px}
+.ann-active .content{padding-top:40px}
 /* RAMADAN */
 .ramadan-bar{background:linear-gradient(135deg,#1a0e00,#2d1a00,#1a0e00);border-bottom:1px solid rgba(200,169,110,0.3);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden}
 .ramadan-bar::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(200,169,110,0.05),transparent);animation:shimRam 3s infinite}
@@ -206,6 +207,27 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Cairo'
 .ladder-item{display:flex;align-items:center;justify-content:space-between;padding:5px 12px;border-radius:8px;font-size:11px}
 .ladder-item.current{background:var(--accent);color:#fff;font-weight:700}
 .ladder-item.passed{color:var(--accent3)}
+/* ROBOT */
+.robot-wrap{display:flex;justify-content:center;margin:8px 0 4px;position:relative}
+.robot{width:70px;height:90px;position:relative;animation:robotBob 2s ease-in-out infinite}
+@keyframes robotBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.robot-head{width:44px;height:38px;background:linear-gradient(135deg,#2a2a3e,#3a3a5e);border-radius:10px;border:2px solid var(--accent);margin:0 auto;position:relative;display:flex;align-items:center;justify-content:center}
+.robot-eye{width:8px;height:8px;background:var(--accent3);border-radius:50%;animation:blink 3s infinite;display:inline-block;margin:0 3px}
+@keyframes blink{0%,95%,100%{transform:scaleY(1)}97%{transform:scaleY(0.1)}}
+.robot-mouth{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);width:16px;height:3px;background:var(--accent);border-radius:2px}
+.robot-body{width:50px;height:38px;background:linear-gradient(135deg,#1e1e2e,#2e2e4e);border-radius:8px;border:2px solid var(--accent);margin:3px auto 0;position:relative;display:flex;align-items:center;justify-content:center}
+.robot-screen{width:34px;height:22px;background:var(--bg);border-radius:4px;border:1px solid var(--accent2);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--gold);text-align:center;padding:2px;line-height:1.2}
+.robot-arm-l,.robot-arm-r{position:absolute;top:4px;width:10px;height:24px;background:linear-gradient(135deg,#2a2a3e,#3a3a5e);border-radius:5px;border:1px solid var(--accent)}
+.robot-arm-l{right:-12px;transform:rotate(15deg)}
+.robot-arm-r{left:-12px;transform:rotate(-15deg)}
+.robot-legs{display:flex;gap:8px;justify-content:center;margin-top:2px}
+.robot-leg{width:12px;height:16px;background:linear-gradient(135deg,#2a2a3e,#3a3a5e);border-radius:4px;border:1px solid var(--accent)}
+.robot-body.correct{border-color:var(--accent3);box-shadow:0 0 15px rgba(67,233,123,0.5);animation:robotHappy .4s ease}
+.robot-body.wrong{border-color:var(--accent2);box-shadow:0 0 15px rgba(255,101,132,0.5);animation:robotSad .4s ease}
+@keyframes robotHappy{0%,100%{transform:rotate(0)}25%{transform:rotate(-8deg)}75%{transform:rotate(8deg)}}
+@keyframes robotSad{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.robot-head.correct .robot-eye{background:var(--accent3)}
+.robot-head.wrong .robot-eye{background:var(--accent2)}
 /* CROSSWORD */
 .crossword-grid{margin:10px 20px;display:flex;flex-direction:column;gap:3px;align-items:center}
 .cw-row{display:flex;gap:3px}
@@ -337,7 +359,20 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Cairo'
         <option value="mgmt">تسيير واقتصاد</option>
       </select>
     </div>
-    <div class="input-group"><div class="input-label">رابط صورة البروفايل</div><input class="input-field" id="editAvatar" placeholder="https://..."></div>
+    <div class="input-group">
+      <div class="input-label">صورة البروفايل</div>
+      <div style="display:flex;align-items:center;gap:10px;margin-top:6px">
+        <div id="previewAvi" style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:#fff;overflow:hidden;flex-shrink:0;border:2px solid var(--border2)">ط</div>
+        <div style="flex:1">
+          <label style="display:block;background:var(--accent);color:#fff;border-radius:var(--radius-sm);padding:10px;text-align:center;font-family:'Cairo',sans-serif;font-size:13px;font-weight:700;cursor:pointer">
+            📷 اختر صورة من هاتفك
+            <input type="file" accept="image/*" id="avatarFile" onchange="previewPhoto(this)" style="display:none">
+          </label>
+          <div style="font-size:10px;color:var(--text3);text-align:center;margin-top:4px">أو</div>
+          <input class="input-field" id="editAvatar" placeholder="رابط صورة https://..." style="margin-top:4px;font-size:12px">
+        </div>
+      </div>
+    </div>
     <button class="primary-btn" onclick="saveProfile()">حفظ ✅</button>
   </div>
 </div>
@@ -345,7 +380,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Cairo'
 <!-- HOME -->
 <div class="screen active" id="homeScreen">
   <div class="ramadan-bar">
-    <div class="ram-right"><div class="ram-fanous">🪔</div><div class="ram-day">رمضان<span id="ramDay">12</span></div></div>
+    <div class="ram-right"><div class="ram-fanous">🪔</div><div class="ram-day">رمضان<span id="ramDay">15</span></div></div>
     <div class="ram-msg" id="ramMsg">رمضان كريم 🌙</div>
     <div style="font-size:14px;letter-spacing:2px">✨🌙✨</div>
   </div>
@@ -402,10 +437,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Cairo'
     </div>
     <div class="section-title">مكتبة الموارد</div>
     <div class="resources-grid">
-      <div class="res-card" onclick="showToast('📚','قريباً!')"><div class="res-icon">📚</div><h4>بكالوريات سابقة</h4><p>امتحانات رسمية</p><div class="res-count">+200 ورقة</div></div>
-      <div class="res-card" onclick="showToast('📋','قريباً!')"><div class="res-icon">📋</div><h4>امتحانات تجريبية</h4><p>استعد مسبقاً</p><div class="res-count">+50 امتحان</div></div>
-      <div class="res-card" onclick="showToast('📖','قريباً!')"><div class="res-icon">📖</div><h4>ملخصات</h4><p>أهم النقاط</p><div class="res-count">كل المواد</div></div>
-      <div class="res-card" onclick="showToast('🌍','قريباً!')"><div class="res-icon">🌍</div><h4>بكالوريات أجنبية</h4><p>تونس·المغرب·فرنسا</p><div class="res-count">+100 ورقة</div></div>
+      <div class="res-card" id="res-bac-prev" onclick="nav('bacPrevScreen',null)"><div class="res-icon">📚</div><h4>بكالوريات سابقة</h4><p>امتحانات رسمية</p><div class="res-count">+200 ورقة</div></div>
+      <div class="res-card" id="res-bac-trial" onclick="nav('bacTrialScreen',null)"><div class="res-icon">📋</div><h4>امتحانات تجريبية</h4><p>استعد مسبقاً</p><div class="res-count">+50 امتحان</div></div>
+      <div class="res-card" id="res-summaries" onclick="nav('summariesScreen',null)"><div class="res-icon">📖</div><h4>ملخصات</h4><p>أهم النقاط</p><div class="res-count">كل المواد</div></div>
+      <div class="res-card" id="res-bac-foreign" onclick="nav('bacForeignScreen',null)"><div class="res-icon">🌍</div><h4>بكالوريات أجنبية</h4><p>تونس·المغرب·فرنسا</p><div class="res-count">+100 ورقة</div></div>
     </div>
     <div style="height:20px"></div>
   </div>
@@ -455,7 +490,26 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Cairo'
     <button class="lifeline-btn" id="llAud" onclick="useAudience()" title="مساعدة الجمهور">👥</button>
     <button class="lifeline-btn" id="llCall" onclick="useCall()" title="اتصل بصديق">📞</button>
   </div>
-  <div class="million-qcard"><div class="million-level" id="mLevel">السؤال 1 من 11</div><div class="million-q" id="mQ"></div></div>
+  <div style="display:flex;align-items:flex-start;gap:10px;padding:0 20px">
+    <div class="robot-wrap" style="margin:0;flex-shrink:0">
+      <div class="robot">
+        <div class="robot-head">
+          <div><span class="robot-eye"></span><span class="robot-eye"></span></div>
+          <div class="robot-mouth"></div>
+        </div>
+        <div class="robot-body" id="robotBody">
+          <div class="robot-arm-l" id="robotArmL"></div>
+          <div class="robot-arm-r" id="robotArmR"></div>
+          <div class="robot-screen" id="robotScreen">
+            <div style="font-size:7px;opacity:.7">GRIT</div>
+            <div style="font-size:11px;font-weight:900">1/11</div>
+          </div>
+        </div>
+        <div class="robot-legs"><div class="robot-leg"></div><div class="robot-leg"></div></div>
+      </div>
+    </div>
+    <div class="million-qcard" style="flex:1;margin:0"><div class="million-level" id="mLevel">السؤال 1 من 11</div><div class="million-q" id="mQ"></div></div>
+  </div>
   <div class="million-opts" id="mOpts"></div>
   <div style="padding:10px 20px 0;font-size:11px;color:var(--accent3);text-align:center;font-weight:600" id="mHint"></div>
   <div class="million-ladder" id="mLadder"></div>
@@ -823,11 +877,14 @@ function algTime(){const n=new Date();return new Date(n.getTime()+n.getTimezoneO
 
 // ══ RAMADAN ══
 function initRamadan(){
-  // اليوم 3 مارس 2026 = اليوم 12 من رمضان → بداية رمضان 20 فبراير 2026
-  const start=new Date('2026-02-20T00:00:00+01:00');
-  const now=algTime();
-  const day=Math.floor((now-start)/86400000)+1;
-  document.getElementById('ramDay').textContent=(day>=1&&day<=30)?day:12;
+  // اليوم 4 مارس 2026 = اليوم 15 من رمضان → بداية رمضان 18 فبراير 2026
+  // 4 مارس 2026 = يوم 15 رمضان ← بداية رمضان 18 فبراير 2026
+  const start=new Date('2026-02-18');
+  start.setHours(0,0,0,0);
+  const todayLocal=new Date();
+  todayLocal.setHours(0,0,0,0);
+  const day=Math.floor((todayLocal-start)/86400000)+1;
+  document.getElementById('ramDay').textContent=(day>=1&&day<=30)?day:15;
   let i=0;
   function rotate(){
     const el=document.getElementById('ramMsg');
@@ -840,8 +897,8 @@ function initRamadan(){
 // ══ COUNTDOWN ══
 function initCountdown(){
   function tick(){
-    const bac=new Date('2026-06-07T08:00:00+01:00');
-    const now=algTime();
+    const now=new Date();
+    const bac=new Date('2026-06-07T00:00:00');
     const diff=bac-now;
     if(diff<=0){document.getElementById('cdNum').textContent='اليوم!';document.getElementById('cdTime').textContent='🎓';return;}
     const d=Math.floor(diff/86400000);
@@ -893,7 +950,18 @@ function setQuote(){const i=algTime().getDate()%QUOTES.length;document.getElemen
 function setToday(){const s=TODAY_S[algTime().getDay()%TODAY_S.length];document.getElementById('ts').textContent=s.s;document.getElementById('tt').textContent=s.t;document.getElementById('tq').textContent=s.n;document.getElementById('tw').textContent=s.w;document.getElementById('tm2').textContent='إتقان '+s.m;}
 function drawDays(){const N=['أح','إث','ثل','أر','خم','جم','سب'];const t=algTime().getDay();document.getElementById('drow').innerHTML=N.map((n,i)=>`<div class="day-chip"><div class="day-dot ${i===t?'today':st.days[i]?'done':''}">${st.days[i]||i===t?'✓':''}</div>${n}</div>`).join('');}
 function updReadiness(){const tot=Object.values(st.mastery).reduce((a,b)=>a+b,0)/5;const xpF=Math.min(st.xp/500*30,30);const sF=Math.min(st.streak/30*20,20);const p=Math.min(Math.round(tot*.5+xpF+sF),100);document.getElementById('readPct').textContent=p+'%';const bar=document.getElementById('readBar');bar.style.width=p+'%';bar.style.background=p<30?'linear-gradient(90deg,#ff6584,#ff8c69)':p<60?'linear-gradient(90deg,#f7971e,#ffd700)':'linear-gradient(90deg,#43e97b,#00b4d8)';document.getElementById('readLabel').textContent=p<30?'ابدأ المراجعة الآن 📚':p<60?'على الطريق الصحيح 👍':p<80?'ممتاز! استمر 🔥':'جاهز للبكالوريا! 🎓';}
-function updAvatar(){['homeAvi','profAvi'].forEach(id=>{const el=document.getElementById(id);if(!el)return;if(st.avatar){el.innerHTML=`<img src="${st.avatar}" onerror="this.innerHTML='${st.name[0]||'ط'}'">`;} else{el.textContent=st.name[0]||'ط';}});}
+function updAvatar(){
+  const av=st.avatar||'';
+  const letter=st.name?st.name[0]:'ط';
+  ['homeAvi','profAvi'].forEach(id=>{
+    const el=document.getElementById(id);if(!el)return;
+    if(av){el.innerHTML=`<img src="${av}" style="width:100%;height:100%;object-fit:cover;border-radius:50%" onerror="this.parentElement.textContent='${letter}'">`;
+    }else{el.innerHTML='';el.textContent=letter;}
+  });
+  // update preview in modal
+  const prev=document.getElementById('previewAvi');
+  if(prev){if(av){prev.innerHTML=`<img src="${av}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;}else{prev.innerHTML='';prev.textContent=letter;}}
+}
 
 // ══ BADGES ══
 function renderBadges(id){const el=document.getElementById(id);if(!el)return;el.innerHTML=BADGES.map(b=>{const e=st.earnedBadges.includes(b.id);return `<div class="badge-item"><div class="badge-icon ${e?'earned':'locked'}" title="${b.desc}">${b.icon}</div><div class="badge-name">${b.name}</div></div>`;}).join('');}
@@ -923,40 +991,71 @@ function shareResult(){const tot=qz.qs.length;const pct=Math.round(qz.score/tot*
 
 // ══ MILLION ══
 function startMillion(){nav('millionScreen',null);mState={cur:0};['ll50','llAud','llCall'].forEach(id=>{document.getElementById(id).disabled=false;document.getElementById(id).classList.remove('used');});renderMQ();}
-function renderMQ(){const q=M_QUESTIONS[mState.cur];document.getElementById('mLevel').textContent=`السؤال ${mState.cur+1} من ${M_QUESTIONS.length}`;document.getElementById('mQ').textContent=q.q;document.getElementById('mPrize').textContent=q.prize+' دج';document.getElementById('mXP').textContent='+'+q.xp+' XP';document.getElementById('mHint').textContent='';const L=['أ','ب','ج','د'];document.getElementById('mOpts').innerHTML=q.o.map((op,i)=>`<button class="million-opt" onclick="pickM(${i})">${L[i]}) ${op}</button>`).join('');document.getElementById('mLadder').innerHTML=[...M_QUESTIONS].reverse().map((x,i)=>{const ri=M_QUESTIONS.length-1-i;return `<div class="ladder-item ${ri===mState.cur?'current':ri<mState.cur?'passed':''}">${ri===mState.cur?'◀ ':ri<mState.cur?'✅ ':''} ${x.prize} دج</div>`;}).join('');}
-function pickM(idx){const q=M_QUESTIONS[mState.cur];const btns=document.querySelectorAll('.million-opt');btns.forEach(b=>b.style.pointerEvents='none');if(idx===q.a){btns[idx].classList.add('correct');st.xp+=q.xp;save();setTimeout(()=>{mState.cur++;if(mState.cur>=M_QUESTIONS.length){st.millionWon=(st.millionWon||0)+1;save();checkBadges();showToast('🏆','فزت بالمليون! 🎉');setTimeout(()=>goBack(),2000);}else renderMQ();},1300);}else{btns[idx].classList.add('wrong');btns[q.a].classList.add('correct');setTimeout(()=>{showToast('💔','خسرت! حظاً أوفر 😅');setTimeout(()=>goBack(),1500);},1300);}}
+function renderMQ(){const q=M_QUESTIONS[mState.cur];
+  // animate robot - show question number
+  const rs=document.getElementById('robotScreen');
+  if(rs){rs.innerHTML=`<div style="font-size:7px;opacity:.7">GRIT</div><div style="font-size:11px;font-weight:900">${mState.cur+1}/${M_QUESTIONS.length}</div>`;}
+  document.getElementById('robotBody').className='robot-body';document.getElementById('mLevel').textContent=`السؤال ${mState.cur+1} من ${M_QUESTIONS.length}`;document.getElementById('mQ').textContent=q.q;document.getElementById('mPrize').textContent=q.prize+' دج';document.getElementById('mXP').textContent='+'+q.xp+' XP';document.getElementById('mHint').textContent='';const L=['أ','ب','ج','د'];document.getElementById('mOpts').innerHTML=q.o.map((op,i)=>`<button class="million-opt" onclick="pickM(${i})">${L[i]}) ${op}</button>`).join('');document.getElementById('mLadder').innerHTML=[...M_QUESTIONS].reverse().map((x,i)=>{const ri=M_QUESTIONS.length-1-i;return `<div class="ladder-item ${ri===mState.cur?'current':ri<mState.cur?'passed':''}">${ri===mState.cur?'◀ ':ri<mState.cur?'✅ ':''} ${x.prize} دج</div>`;}).join('');}
+function pickM(idx){const q=M_QUESTIONS[mState.cur];const btns=document.querySelectorAll('.million-opt');btns.forEach(b=>b.style.pointerEvents='none');if(idx===q.a){
+    btns[idx].classList.add('correct');st.xp+=q.xp;save();
+    // robot happy reaction
+    const rb=document.getElementById('robotBody');const rh=document.querySelector('.robot-head');const rs=document.getElementById('robotScreen');
+    if(rb){rb.classList.add('correct');if(rh)rh.classList.add('correct');if(rs)rs.innerHTML='<div style="font-size:14px">✅</div>';}
+    setTimeout(()=>{if(rb)rb.classList.remove('correct');if(rh)rh.classList.remove('correct');mState.cur++;if(mState.cur>=M_QUESTIONS.length){st.millionWon=(st.millionWon||0)+1;save();checkBadges();showToast('🏆','فزت بالمليون! 🎉');setTimeout(()=>goBack(),2000);}else renderMQ();},1300);}else{
+    btns[idx].classList.add('wrong');btns[q.a].classList.add('correct');
+    // robot sad reaction
+    const rb=document.getElementById('robotBody');const rh=document.querySelector('.robot-head');const rs=document.getElementById('robotScreen');
+    if(rb){rb.classList.add('wrong');if(rh)rh.classList.add('wrong');if(rs)rs.innerHTML='<div style="font-size:14px">❌</div>';}
+    setTimeout(()=>{showToast('💔','خسرت! حظاً أوفر 😅');setTimeout(()=>goBack(),1500);},1300);}}
 function use5050(){const q=M_QUESTIONS[mState.cur];document.getElementById('ll50').disabled=true;document.getElementById('ll50').classList.add('used');const wrong=q.o.map((_,i)=>i).filter(i=>i!==q.a);const hide=wrong.sort(()=>Math.random()-.5).slice(0,2);document.querySelectorAll('.million-opt').forEach((b,i)=>{if(hide.includes(i))b.classList.add('eliminated');});showToast('🎯','تم حذف خيارين خاطئين!');}
 function useAudience(){const q=M_QUESTIONS[mState.cur];document.getElementById('llAud').disabled=true;document.getElementById('llAud').classList.add('used');const L=['أ','ب','ج','د'];document.getElementById('mHint').textContent='👥 الجمهور: '+L[q.a]+' ('+Math.floor(60+Math.random()*25)+'%)';showToast('👥','مساعدة الجمهور!');}
 function useCall(){const q=M_QUESTIONS[mState.cur];document.getElementById('llCall').disabled=true;document.getElementById('llCall').classList.add('used');const L=['أ','ب','ج','د'];document.getElementById('mHint').textContent='📞 صديقك: أعتقد الإجابة '+L[q.a]+' لكن لست متأكداً تماماً';showToast('📞','اتصلت بصديقك!');}
 
 // ══ CROSSWORD ══
+// ══ CROSSWORD DATA ══
+// شبكة 8×8 كلمات علمية واضحة
+// PHYSICS  : أفقي — صف 0، عمود 0  (7 حروف)
+// ATOM     : عمودي — صف 0، عمود 4  (4 حروف)
+// ENERGY   : أفقي — صف 3، عمود 1  (6 حروف)
+// GENE     : عمودي — صف 3، عمود 6  (4 حروف)
+// MASS     : أفقي — صف 6، عمود 2  (4 حروف)
+const CW_WORDS=[
+  {w:'PHYSICS',dir:'a',r:0,c:0,num:1,clue:'الفيزياء'},
+  {w:'ATOM',   dir:'d',r:0,c:4,num:2,clue:'الذرة'},
+  {w:'ENERGY', dir:'a',r:3,c:1,num:3,clue:'الطاقة'},
+  {w:'GENE',   dir:'d',r:3,c:6,num:4,clue:'الجين الوراثي'},
+  {w:'MASS',   dir:'a',r:6,c:2,num:5,clue:'الكتلة'},
+];
 function startCrossword(){nav('crosswordScreen',null);renderCW();}
 function renderCW(){
-  const words=[{w:'ENERGY',clue:'الطاقة',dir:'d',r:0,c:0},{w:'ATOM',clue:'الذرة',dir:'a',r:2,c:0},{w:'GENE',clue:'الجين الوراثي',dir:'d',r:0,c:3},{w:'MASS',clue:'الكتلة',dir:'a',r:4,c:0}];
-  // Simple 6x6 grid
-  const G=Array(6).fill(null).map(()=>Array(6).fill('#'));
-  // ENERGY vertical col 0
-  'ENERGY'.split('').forEach((c,i)=>G[i][0]=c);
-  // ATOM horizontal row 2
-  'ATOM'.split('').forEach((c,i)=>G[2][i+0]=c);
-  // MASS horizontal row 4
-  'MASS'.split('').forEach((c,i)=>G[4][i+0]=c);
-  // GENE vertical col 3
-  'GENE'.split('').forEach((c,i)=>G[i][3]=c);
+  const ROWS=8,COLS=8;
+  const G=Array(ROWS).fill(null).map(()=>Array(COLS).fill({ch:'#',ans:'#'}));
+  CW_WORDS.forEach(w=>{
+    for(let i=0;i<w.w.length;i++){
+      const r=w.dir==='a'?w.r:w.r+i;
+      const c=w.dir==='a'?w.c+i:w.c;
+      if(r<ROWS&&c<COLS)G[r][c]={ch:'',ans:w.w[i]};
+    }
+  });
+  // number map
+  const nums={};
+  CW_WORDS.forEach(w=>nums[w.r+','+w.c]=w.num);
 
-  const nums={};nums['0,0']=1;nums['2,0']=2;nums['4,0']=3;nums['0,3']=4;
+  const cellSize=Math.min(36,Math.floor((window.innerWidth-48)/COLS));
+  document.getElementById('cwGrid').style.setProperty('--cs',cellSize+'px');
+  document.getElementById('cwGrid').innerHTML=G.map((row,ri)=>
+    `<div class="cw-row">${row.map((cell,ci)=>{
+      if(cell.ch==='#')return `<div class="cw-cell black" style="width:${cellSize}px;height:${cellSize}px"></div>`;
+      const n=nums[ri+','+ci]?`<div class="cw-num">${nums[ri+','+ci]}</div>`:'';
+      return `<div class="cw-cell" style="width:${cellSize}px;height:${cellSize}px">${n}<input maxlength="1" id="cwi${ri}_${ci}" data-ans="${cell.ans}" oninput="cwInp(this,${ri},${ci})" style="text-transform:uppercase;width:100%;height:100%;border:none;background:transparent;text-align:center;font-family:'Cairo',sans-serif;font-size:${Math.floor(cellSize*0.45)}px;font-weight:700;color:var(--text);outline:none"></div>`;
+    }).join('')}</div>`
+  ).join('');
 
-  document.getElementById('cwGrid').innerHTML=G.map((row,ri)=>`<div class="cw-row">${row.map((cell,ci)=>{if(cell==='#')return `<div class="cw-cell black"></div>`;const n=nums[ri+','+ci]?`<div class="cw-num">${nums[ri+','+ci]}</div>`:'';return `<div class="cw-cell" id="cw${ri}_${ci}">${n}<input maxlength="1" id="cwi${ri}_${ci}" data-ans="${cell}" oninput="cwInp(this,${ri},${ci})" style="text-transform:uppercase"></div>`;}).join('')}</div>`).join('');
-
+  const across=CW_WORDS.filter(w=>w.dir==='a').map(w=>`<div class="cw-clue"><span>${w.num}→</span> ${w.clue} (${w.w.length})</div>`).join('');
+  const down=CW_WORDS.filter(w=>w.dir==='d').map(w=>`<div class="cw-clue"><span>${w.num}↓</span> ${w.clue} (${w.w.length})</div>`).join('');
   document.getElementById('cwClues').innerHTML=`
-    <div class="cw-clue-section"><h4>عمودي ↓</h4>
-      <div class="cw-clue"><span>1↓</span> الطاقة</div>
-      <div class="cw-clue"><span>4↓</span> الجين الوراثي</div>
-    </div>
-    <div class="cw-clue-section"><h4>أفقي ←</h4>
-      <div class="cw-clue"><span>2←</span> الذرة</div>
-      <div class="cw-clue"><span>3←</span> الكتلة</div>
-    </div>`;
+    <div class="cw-clue-section"><h4>أفقي →</h4>${across}</div>
+    <div class="cw-clue-section"><h4>عمودي ↓</h4>${down}</div>`;
 }
 function cwInp(el,r,c){el.value=el.value.toUpperCase().slice(-1);const next=document.getElementById(`cwi${r}_${c+1}`)||document.getElementById(`cwi${r+1}_${c}`);if(next&&next.closest('.cw-cell')&&!next.closest('.black'))next.focus();}
 function checkCrossword(){let ok=0,tot=0;document.querySelectorAll('[data-ans]').forEach(inp=>{tot++;const cell=inp.closest('.cw-cell');if(inp.value.toUpperCase()===inp.dataset.ans){ok++;cell.classList.add('correct');}});const p=Math.round(ok/tot*100);if(p===100){st.xp+=30;save();showToast('🏆','مثالي! +30 XP');}else showToast('📝',`${ok}/${tot} صحيح (${p}%)`);}
@@ -969,9 +1068,41 @@ function azkarBack(){if(curAzkarCat){curAzkarCat='';document.getElementById('azk
 
 // ══ PROFILE ══
 function updProfile(){document.getElementById('profName').textContent=st.name;document.getElementById('profBranch').textContent='🎓 '+BRANCH_NAMES[st.branch]+' — بكالوريا 2026';document.getElementById('pp-xp').textContent=st.xp;document.getElementById('pp-str').textContent=st.streak;document.getElementById('pp-ok').textContent=st.ok;updAvatar();document.getElementById('profBadges').innerHTML=BADGES.map(b=>{const e=st.earnedBadges.includes(b.id);return `<div class="badge-item"><div class="badge-icon ${e?'earned':'locked'}">${b.icon}</div><div class="badge-name">${b.name}</div></div>`;}).join('');document.getElementById('profSubj').innerHTML=Object.entries(S).map(([k,v])=>{const p=st.mastery[k]||0;return `<div class="subj-row"><div class="subj-header"><div class="subj-name">${v.i} ${v.n}</div><div class="subj-pct" style="color:${v.c}">${p}%</div></div><div class="subj-bar"><div class="subj-fill" style="width:${p}%;background:${v.c}"></div></div></div>`;}).join('');}
-function openModal(){document.getElementById('editName').value=st.name;document.getElementById('editBranch').value=st.branch;document.getElementById('editAvatar').value=st.avatar||'';document.getElementById('editModal').classList.add('show');}
+function previewPhoto(input){
+  const file=input.files[0];if(!file)return;
+  const reader=new FileReader();
+  reader.onload=e=>{
+    const data=e.target.result;
+    const prev=document.getElementById('previewAvi');
+    if(prev)prev.innerHTML=`<img src="${data}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;
+    document.getElementById('editAvatar').value='';
+    // store temp
+    document._tempAvatar=data;
+  };
+  reader.readAsDataURL(file);
+}
+function openModal(){
+  document._tempAvatar=null;
+  document.getElementById('editName').value=st.name;
+  document.getElementById('editBranch').value=st.branch;
+  document.getElementById('editAvatar').value=st.avatar&&!st.avatar.startsWith('data:')?st.avatar:'';
+  document.getElementById('editModal').classList.add('show');
+  // show current avatar in preview
+  const prev=document.getElementById('previewAvi');
+  if(prev){if(st.avatar){prev.innerHTML=`<img src="${st.avatar}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`;}else{prev.innerHTML='';prev.textContent=st.name[0]||'ط';}}
+}
 function closeModal(){document.getElementById('editModal').classList.remove('show');}
-function saveProfile(){st.name=document.getElementById('editName').value||st.name;st.branch=document.getElementById('editBranch').value;st.avatar=document.getElementById('editAvatar').value;save();closeModal();document.getElementById('uname').textContent=st.name;updAvatar();updProfile();showToast('✅','تم حفظ الملف الشخصي');}
+function saveProfile(){
+  st.name=document.getElementById('editName').value||st.name;
+  st.branch=document.getElementById('editBranch').value;
+  const urlInput=document.getElementById('editAvatar').value.trim();
+  if(document._tempAvatar){st.avatar=document._tempAvatar;}
+  else if(urlInput){st.avatar=urlInput;}
+  else if(!document._tempAvatar&&!urlInput){/* keep existing */}
+  save();closeModal();
+  document.getElementById('uname').textContent=st.name;
+  updAvatar();updProfile();showToast('✅','تم حفظ الملف الشخصي');
+}
 
 // ══ PROGRESS ══
 function updProg(){document.getElementById('pstr').textContent=st.streak;document.getElementById('pxp').textContent=st.xp;document.getElementById('pok').textContent=st.ok;document.getElementById('pses').textContent=st.ses;const ent=Object.entries(st.mastery);if(ent.length){const srt=ent.sort((a,b)=>b[1]-a[1]);document.getElementById('pbest').textContent=(S[srt[0][0]]?.i||'')+' '+(S[srt[0][0]]?.n||'');document.getElementById('pworst').textContent=(S[srt[srt.length-1][0]]?.i||'')+' '+(S[srt[srt.length-1][0]]?.n||'');}renderBadges('badgesRow2');document.getElementById('sprog').innerHTML=Object.entries(S).map(([k,v])=>{const p=st.mastery[k]||0;return `<div class="subj-row"><div class="subj-header"><div class="subj-name">${v.i} ${v.n}</div><div class="subj-pct" style="color:${v.c}">${p}%</div></div><div class="subj-bar"><div class="subj-fill" style="width:${p}%;background:${v.c}"></div></div></div>`;}).join('');}
@@ -998,7 +1129,203 @@ function showToast(i,m){document.getElementById('ti').textContent=i;document.get
 function showXP(a){document.getElementById('xpAmt').textContent='+'+a+' XP';document.getElementById('xpPopup').classList.add('show');document.getElementById('overlay').classList.add('show');setTimeout(hidePopups,2000);}
 function hidePopups(){document.getElementById('xpPopup').classList.remove('show');document.getElementById('badgePopup').classList.remove('show');document.getElementById('overlay').classList.remove('show');}
 
+// ══════════════════════════════════════
+// GITHUB INTEGRATION — توافق مع البوت
+// ══════════════════════════════════════
+const GH_BASE = 'https://raw.githubusercontent.com/lordbibras404/gritlearn/main/data/';
+
+async function ghFetch(file) {
+  try {
+    const res = await fetch(GH_BASE + file + '?t=' + Date.now());
+    if (!res.ok) return null;
+    return await res.json();
+  } catch(e) { return null; }
+}
+
+// شريط الإعلان الثابت
+function showAnnouncement(data) {
+  if (!data || !data.active || !data.text) return;
+  const bar = document.getElementById('ann-bar');
+  const txt = document.getElementById('ann-text');
+  if (!bar || !txt) return;
+  txt.textContent = (data.emoji || '📢') + ' ' + data.text;
+  bar.style.display = 'flex';
+  document.body.classList.add('ann-active');
+}
+
+// إخفاء/إظهار الأقسام
+function applySections(data) {
+  if (!data || !data.sections) return;
+  const map = {
+    'quiz':       ['nQuiz'],
+    'azkar':      ['nAzkar'],
+    'million':    [],
+    'crossword':  [],
+    'summaries':  ['res-summaries'],
+    'bac_prev':   ['res-bac-prev'],
+    'bac_trial':  ['res-bac-trial'],
+    'bac_foreign':['res-bac-foreign'],
+  };
+  Object.entries(data.sections).forEach(([key, sec]) => {
+    if (!sec.visible) {
+      (map[key] || []).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+    }
+  });
+}
+
+// دمج أسئلة البوت مع الأسئلة الموجودة
+function mergeQuiz(remoteQ) {
+  if (!remoteQ) return;
+  Object.keys(remoteQ).forEach(subj => {
+    if (!Q[subj]) Q[subj] = { easy: [], medium: [], hard: [] };
+    ['easy','medium','hard'].forEach(diff => {
+      const arr = remoteQ[subj][diff];
+      if (Array.isArray(arr) && arr.length > 0) {
+        Q[subj][diff] = [...Q[subj][diff], ...arr];
+      }
+    });
+  });
+}
+
+// عرض الملخصات من البوت
+function renderSummaries(data) {
+  if (!data || !data.subjects) return;
+  const container = document.getElementById('summaries-list');
+  if (!container) return;
+  let html = '';
+  Object.values(data.subjects).forEach(subj => {
+    if (subj.items.length === 0) return;
+    html += `<div style="margin-bottom:12px">
+      <div style="font-size:12px;font-weight:700;color:var(--text2);margin-bottom:6px">${subj.icon} ${subj.name}</div>`;
+    subj.items.forEach(item => {
+      html += `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="openLink('${item.url}')">
+        <span style="font-size:13px;font-weight:600">${item.title}</span>
+        <span style="color:var(--accent);font-size:18px">↗</span>
+      </div>`;
+    });
+    html += '</div>';
+  });
+  container.innerHTML = html || '<div style="text-align:center;padding:20px;color:var(--text2)">لا توجد ملخصات بعد</div>';
+}
+
+// عرض الامتحانات من البوت
+function renderExams(data) {
+  if (!data) return;
+  const types = {
+    bac_previous: 'res-bac-prev-list',
+    bac_trial:    'res-bac-trial-list',
+    bac_foreign:  'res-bac-foreign-list',
+  };
+  Object.entries(types).forEach(([key, cid]) => {
+    const container = document.getElementById(cid);
+    if (!container || !data[key]) return;
+    const items = data[key].items;
+    if (items.length === 0) return;
+    container.innerHTML = items.map(item =>
+      `<div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between;cursor:pointer" onclick="openLink('${item.url}')">
+        <div><div style="font-size:13px;font-weight:700">${item.title}</div><div style="font-size:10px;color:var(--text2);margin-top:2px">${item.year || ''}</div></div>
+        <span style="color:var(--accent);font-size:18px">↗</span>
+      </div>`
+    ).join('');
+  });
+}
+
+// الدالة الرئيسية لجلب كل البيانات
+async function loadRemoteData() {
+  const [announce, sections, quiz, summaries, exams] = await Promise.all([
+    ghFetch('announcements.json'),
+    ghFetch('sections.json'),
+    ghFetch('quiz.json'),
+    ghFetch('summaries.json'),
+    ghFetch('exams.json'),
+  ]);
+  showAnnouncement(announce);
+  applySections(sections);
+  mergeQuiz(quiz);
+  renderSummaries(summaries);
+  renderExams(exams);
+}
+
 init();
+loadRemoteData();
 </script>
+
+<!-- شريط الإعلان الثابت -->
+<div id="ann-bar" style="display:none;position:fixed;top:0;left:0;right:0;z-index:200;background:linear-gradient(135deg,var(--accent),#8b5cf6);padding:9px 14px;align-items:center;justify-content:space-between;gap:10px">
+  <span id="ann-text" style="font-size:12px;font-weight:700;color:#fff;flex:1"></span>
+  <button onclick="document.getElementById('ann-bar').style.display='none'" style="background:rgba(255,255,255,0.2);border:none;color:#fff;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0">✕</button>
+</div>
+
+<!-- شاشة الملخصات -->
+<div class="screen" id="summariesScreen">
+  <div class="content">
+    <div style="padding:14px 20px;display:flex;align-items:center;gap:10px">
+      <button class="back-btn" onclick="goBack()">← رجوع</button>
+      <div style="font-size:17px;font-weight:900">الملخصات 📖</div>
+    </div>
+    <div style="padding:0 20px" id="summaries-list">
+      <div style="text-align:center;padding:30px;color:var(--text2)">
+        <div style="font-size:36px;margin-bottom:8px">📖</div>
+        <div style="font-weight:700">جارٍ التحميل...</div>
+      </div>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<!-- شاشة البكالوريات السابقة -->
+<div class="screen" id="bacPrevScreen">
+  <div class="content">
+    <div style="padding:14px 20px;display:flex;align-items:center;gap:10px">
+      <button class="back-btn" onclick="goBack()">← رجوع</button>
+      <div style="font-size:17px;font-weight:900">بكالوريات سابقة 📚</div>
+    </div>
+    <div style="padding:0 20px" id="res-bac-prev-list">
+      <div style="text-align:center;padding:30px;color:var(--text2)">
+        <div style="font-size:36px;margin-bottom:8px">📚</div>
+        <div style="font-weight:700">جارٍ التحميل...</div>
+      </div>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<!-- شاشة الامتحانات التجريبية -->
+<div class="screen" id="bacTrialScreen">
+  <div class="content">
+    <div style="padding:14px 20px;display:flex;align-items:center;gap:10px">
+      <button class="back-btn" onclick="goBack()">← رجوع</button>
+      <div style="font-size:17px;font-weight:900">امتحانات تجريبية 📋</div>
+    </div>
+    <div style="padding:0 20px" id="res-bac-trial-list">
+      <div style="text-align:center;padding:30px;color:var(--text2)">
+        <div style="font-size:36px;margin-bottom:8px">📋</div>
+        <div style="font-weight:700">جارٍ التحميل...</div>
+      </div>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<!-- شاشة البكالوريات الأجنبية -->
+<div class="screen" id="bacForeignScreen">
+  <div class="content">
+    <div style="padding:14px 20px;display:flex;align-items:center;gap:10px">
+      <button class="back-btn" onclick="goBack()">← رجوع</button>
+      <div style="font-size:17px;font-weight:900">بكالوريات أجنبية 🌍</div>
+    </div>
+    <div style="padding:0 20px" id="res-bac-foreign-list">
+      <div style="text-align:center;padding:30px;color:var(--text2)">
+        <div style="font-size:36px;margin-bottom:8px">🌍</div>
+        <div style="font-weight:700">جارٍ التحميل...</div>
+      </div>
+    </div>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
 </body>
 </html>
