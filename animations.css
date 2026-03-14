@@ -1,0 +1,1821 @@
+/* ============================================================
+   GRIT Learn v7 — Animation & Motion System
+   Premium Animations — micro-interactions, spring physics,
+   particles, rewards, transitions
+   ============================================================ */
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — ENTRANCE ANIMATIONS
+════════════════════════════════════════════════════════════ */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUpSmall {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(36px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(-36px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleInCenter {
+  from { opacity: 0; transform: scale(0.6) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes scaleInBounce {
+  0%   { opacity: 0; transform: scale(0.5); }
+  60%  { opacity: 1; transform: scale(1.12); }
+  80%  { transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleInSpring {
+  0%   { opacity: 0; transform: scale(0.3) rotate(-6deg); }
+  50%  { opacity: 1; transform: scale(1.08) rotate(2deg); }
+  75%  { transform: scale(0.97) rotate(-1deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+@keyframes slideInBottom {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes slideInTop {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(-100%); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+
+@keyframes slideOutBottom {
+  from { transform: translateY(0);    opacity: 1; }
+  to   { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes popIn {
+  0%   { transform: scale(0); opacity: 0; }
+  70%  { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes popOut {
+  0%   { transform: scale(1); opacity: 1; }
+  30%  { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+@keyframes blurIn {
+  from { filter: blur(12px); opacity: 0; transform: scale(1.04); }
+  to   { filter: blur(0);    opacity: 1; transform: scale(1); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — LOOPING / AMBIENT
+════════════════════════════════════════════════════════════ */
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.06); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(var(--accent-rgb), 0.4); }
+  50%       { box-shadow: 0 0 0 10px rgba(var(--accent-rgb), 0); }
+}
+
+@keyframes pulseGlowGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5); }
+  50%       { box-shadow: 0 0 0 12px rgba(245, 158, 11, 0); }
+}
+
+@keyframes pulseGlowGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45); }
+  50%       { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes bounceSmall {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+@keyframes bounceBig {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33%       { transform: translateY(-6px) rotate(1deg); }
+  66%       { transform: translateY(-3px) rotate(-1deg); }
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes floatRotate {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25%       { transform: translateY(-5px) rotate(3deg); }
+  75%       { transform: translateY(-8px) rotate(-2deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes rock {
+  0%, 100% { transform: rotate(-4deg); }
+  50%       { transform: rotate(4deg); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-3deg) translateX(-2px); }
+  50%       { transform: rotate(3deg) translateX(2px); }
+}
+
+@keyframes wave {
+  0%   { transform: rotate(0deg); }
+  10%  { transform: rotate(14deg); }
+  20%  { transform: rotate(-8deg); }
+  30%  { transform: rotate(14deg); }
+  40%  { transform: rotate(-4deg); }
+  50%  { transform: rotate(10deg); }
+  60%  { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes gradientRotate {
+  0%   { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes morphBlob {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%       { border-radius: 50% 60% 30% 60% / 40% 50% 60% 50%; }
+  75%       { border-radius: 40% 60% 50% 40% / 60% 40% 50% 50%; }
+}
+
+@keyframes aurora {
+  0%, 100% {
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  33% {
+    background-position: 100% 50%;
+    filter: hue-rotate(30deg) brightness(1.1);
+  }
+  66% {
+    background-position: 50% 0%;
+    filter: hue-rotate(-20deg) brightness(0.95);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — INTERACTION FEEDBACK
+════════════════════════════════════════════════════════════ */
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%       { transform: translateX(-8px) rotate(-1deg); }
+  20%       { transform: translateX(8px)  rotate(1deg); }
+  30%       { transform: translateX(-7px) rotate(-1deg); }
+  40%       { transform: translateX(7px)  rotate(1deg); }
+  50%       { transform: translateX(-5px); }
+  60%       { transform: translateX(5px); }
+  70%       { transform: translateX(-3px); }
+  80%       { transform: translateX(3px); }
+  90%       { transform: translateX(-1px); }
+}
+
+@keyframes shakeVertical {
+  0%, 100% { transform: translateY(0); }
+  20%       { transform: translateY(-6px); }
+  40%       { transform: translateY(6px); }
+  60%       { transform: translateY(-4px); }
+  80%       { transform: translateY(4px); }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  15%       { transform: rotate(-5deg) scale(0.97); }
+  30%       { transform: rotate(4deg) scale(1.02); }
+  45%       { transform: rotate(-3deg) scale(0.98); }
+  60%       { transform: rotate(2deg) scale(1.01); }
+  75%       { transform: rotate(-1deg); }
+}
+
+@keyframes tap {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.92); }
+  100% { transform: scale(1); }
+}
+
+@keyframes tapBig {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.88); }
+  70%  { transform: scale(1.04); }
+  100% { transform: scale(1); }
+}
+
+@keyframes pressDown {
+  0%   { transform: scale(1) translateY(0); }
+  50%  { transform: scale(0.96) translateY(2px); }
+  100% { transform: scale(1) translateY(0); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — REWARD / CELEBRATION
+════════════════════════════════════════════════════════════ */
+
+@keyframes correctFlash {
+  0%   { background: transparent; }
+  20%  { background: rgba(16, 185, 129, 0.20); box-shadow: inset 0 0 0 2px var(--success); }
+  60%  { background: rgba(16, 185, 129, 0.12); }
+  100% { background: transparent; }
+}
+
+@keyframes wrongFlash {
+  0%   { background: transparent; }
+  20%  { background: rgba(239, 68, 68, 0.20); box-shadow: inset 0 0 0 2px var(--error); }
+  60%  { background: rgba(239, 68, 68, 0.10); }
+  100% { background: transparent; }
+}
+
+@keyframes xpBurst {
+  0%   { transform: scale(0.5) translateY(0); opacity: 0; }
+  20%  { transform: scale(1.3) translateY(-8px); opacity: 1; }
+  80%  { transform: scale(1) translateY(-30px); opacity: 1; }
+  100% { transform: scale(0.8) translateY(-50px); opacity: 0; }
+}
+
+@keyframes xpFloat {
+  0%   { opacity: 0; transform: translateY(0) scale(0.8); }
+  15%  { opacity: 1; transform: translateY(-10px) scale(1.2); }
+  70%  { opacity: 1; transform: translateY(-45px) scale(1); }
+  100% { opacity: 0; transform: translateY(-70px) scale(0.9); }
+}
+
+@keyframes levelUpRing {
+  0%   { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes starBurst {
+  0%   { transform: scale(0) rotate(0deg); opacity: 1; }
+  60%  { transform: scale(1.4) rotate(180deg); opacity: 1; }
+  100% { transform: scale(1) rotate(360deg); opacity: 0; }
+}
+
+@keyframes confettiDrop {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes confettiWiggle {
+  0%   { transform: translateY(-20px) rotate(0deg) scaleX(1); opacity: 1; }
+  25%  { transform: translateY(25vh) rotate(180deg) scaleX(-1); }
+  50%  { transform: translateY(50vh) rotate(360deg) scaleX(1); }
+  75%  { transform: translateY(75vh) rotate(540deg) scaleX(-1); }
+  100% { transform: translateY(110vh) rotate(720deg) scaleX(1); opacity: 0; }
+}
+
+@keyframes particleFloat {
+  0%   { transform: translate(0, 0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--px, 40px), var(--py, -80px)) scale(0); opacity: 0; }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50%       { transform: scale(1) rotate(180deg); opacity: 1; }
+}
+
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.6; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+@keyframes rippleSmall {
+  0%   { transform: scale(0); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes fireRise {
+  0%, 100% { transform: scaleY(1) translateY(0); opacity: 0.9; }
+  50%       { transform: scaleY(1.15) translateY(-4px); opacity: 1; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — PROGRESS / LOADING
+════════════════════════════════════════════════════════════ */
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to   { width: var(--target-w, 100%); }
+}
+
+@keyframes progressFillH {
+  from { width: 0; }
+}
+
+@keyframes circleDash {
+  from { stroke-dashoffset: var(--circle-total, 283); }
+  to   { stroke-dashoffset: var(--circle-offset, 0); }
+}
+
+@keyframes loadingDots {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.3; }
+  40%            { transform: scale(1); opacity: 1; }
+}
+
+@keyframes loadingBar {
+  0%   { left: -40%; }
+  100% { left: 100%; }
+}
+
+@keyframes loadingPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes skeleton {
+  0%   { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+@keyframes scanline {
+  0%   { top: -10%; }
+  100% { top: 110%; }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — SPLASH & ONBOARDING
+════════════════════════════════════════════════════════════ */
+
+@keyframes splashLogo {
+  0%   { transform: scale(0) rotate(-20deg); opacity: 0; filter: blur(20px); }
+  40%  { transform: scale(1.2) rotate(5deg); opacity: 1; filter: blur(0); }
+  70%  { transform: scale(0.95) rotate(-2deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes splashText {
+  0%   { opacity: 0; transform: translateY(30px) scale(0.9); }
+  60%  { opacity: 1; transform: translateY(-4px) scale(1.02); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes splashSubtext {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes splashProgress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+@keyframes splashExit {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.05); pointer-events: none; }
+}
+
+@keyframes orbitDot {
+  from { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — NAVIGATION
+════════════════════════════════════════════════════════════ */
+
+@keyframes navIndicatorSlide {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+@keyframes navIconBounce {
+  0%, 100% { transform: translateY(0) scale(1); }
+  40%       { transform: translateY(-6px) scale(1.2); }
+  70%       { transform: translateY(2px) scale(0.95); }
+}
+
+@keyframes navIconWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25%       { transform: rotate(-12deg); }
+  75%       { transform: rotate(12deg); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — SCREEN TRANSITIONS
+════════════════════════════════════════════════════════════ */
+
+@keyframes screenEnter {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes screenExit {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px) scale(1.02);
+  }
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — SPECIAL EFFECTS
+════════════════════════════════════════════════════════════ */
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.3),
+                0 0 24px rgba(var(--accent-rgb), 0.1);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.5),
+                0 0 40px rgba(var(--accent-rgb), 0.2),
+                0 0 60px rgba(var(--accent-rgb), 0.08);
+  }
+}
+
+@keyframes glowGold {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(245, 158, 11, 0.35),
+                0 0 24px rgba(245, 158, 11, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(245, 158, 11, 0.55),
+                0 0 48px rgba(245, 158, 11, 0.22),
+                0 0 80px rgba(245, 158, 11, 0.10);
+  }
+}
+
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  92%       { opacity: 1; }
+  93%       { opacity: 0.4; }
+  94%       { opacity: 1; }
+  96%       { opacity: 0.6; }
+  97%       { opacity: 1; }
+}
+
+@keyframes scanEffect {
+  0%   { background-position: 0 -100vh; }
+  100% { background-position: 0 100vh; }
+}
+
+@keyframes noiseShift {
+  0%   { transform: translate(0, 0); }
+  25%  { transform: translate(-2px, 1px); }
+  50%  { transform: translate(1px, -2px); }
+  75%  { transform: translate(2px, 1px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes borderRotate {
+  from { --border-angle: 0deg; }
+  to   { --border-angle: 360deg; }
+}
+
+/* ════════════════════════════════════════════════════════════
+   KEYFRAMES — ONBOARDING SPECIFIC
+════════════════════════════════════════════════════════════ */
+
+@keyframes obBounce {
+  0%   { transform: scale(0.2) rotate(-10deg); opacity: 0; }
+  50%  { transform: scale(1.15) rotate(4deg); opacity: 1; }
+  75%  { transform: scale(0.94) rotate(-2deg); }
+  90%  { transform: scale(1.04) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@keyframes obStep {
+  from { opacity: 0; transform: translateX(30px) scale(0.96); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes obStepBack {
+  from { opacity: 0; transform: translateX(-30px) scale(0.96); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@keyframes obBranchSelect {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+/* ════════════════════════════════════════════════════════════
+   ANIMATION UTILITY CLASSES
+════════════════════════════════════════════════════════════ */
+
+/* Entrance */
+.anim-fade-in          { animation: fadeIn var(--dur-slow) var(--ease-out) both; }
+.anim-fade-in-up       { animation: fadeInUp var(--dur-slow) var(--ease-spring) both; }
+.anim-fade-in-up-sm    { animation: fadeInUpSmall var(--dur) var(--ease-spring) both; }
+.anim-fade-in-down     { animation: fadeInDown var(--dur-slow) var(--ease-spring) both; }
+.anim-fade-in-left     { animation: fadeInLeft var(--dur-slow) var(--ease-spring) both; }
+.anim-fade-in-right    { animation: fadeInRight var(--dur-slow) var(--ease-spring) both; }
+.anim-scale-in         { animation: scaleIn var(--dur-slow) var(--ease-spring) both; }
+.anim-scale-in-bounce  { animation: scaleInBounce var(--dur-slower) var(--ease) both; }
+.anim-pop-in           { animation: popIn var(--dur-slow) var(--ease-spring) both; }
+.anim-slide-in-bottom  { animation: slideInBottom var(--dur-slow) var(--ease-spring) both; }
+.anim-blur-in          { animation: blurIn var(--dur-slow) var(--ease-out) both; }
+
+/* Looping */
+.anim-pulse            { animation: pulse 2s var(--ease-in-out) infinite; }
+.anim-pulse-scale      { animation: pulseScale 2s var(--ease-in-out) infinite; }
+.anim-pulse-glow       { animation: pulseGlow 2s ease-in-out infinite; }
+.anim-bounce           { animation: bounce 1.4s var(--ease-in-out) infinite; }
+.anim-float            { animation: float 3s var(--ease-in-out) infinite; }
+.anim-float-slow       { animation: floatSlow 4s var(--ease-in-out) infinite; }
+.anim-spin             { animation: spin 1s linear infinite; }
+.anim-spin-slow        { animation: spinSlow 3s linear infinite; }
+.anim-shimmer          { animation: shimmer 2s linear infinite; }
+.anim-gradient         { animation: gradientShift 4s ease infinite; background-size: 200% 200%; }
+.anim-glow             { animation: glowPulse 2.5s ease-in-out infinite; }
+.anim-glow-gold        { animation: glowGold 2.5s ease-in-out infinite; }
+.anim-wave             { animation: wave 2s ease-in-out; }
+
+/* Feedback */
+.anim-shake            { animation: shake 0.5s var(--ease) both; }
+.anim-wobble           { animation: wobble 0.6s var(--ease) both; }
+.anim-correct-flash    { animation: correctFlash 0.6s var(--ease) both; }
+.anim-wrong-flash      { animation: wrongFlash 0.6s var(--ease) both; }
+
+/* Stagger delays */
+.delay-0   { animation-delay: 0ms; }
+.delay-50  { animation-delay: 50ms; }
+.delay-100 { animation-delay: 100ms; }
+.delay-150 { animation-delay: 150ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-250 { animation-delay: 250ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* ════════════════════════════════════════════════════════════
+   SPLASH SCREEN
+════════════════════════════════════════════════════════════ */
+
+#splashScreen {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-splash);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--grad-cosmic);
+}
+
+#splashScreen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grad-mesh-dark);
+  opacity: 0.7;
+}
+
+.splash-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.splash-bg-orb-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(139, 92, 246, 0.35);
+  top: -80px;
+  left: -80px;
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.splash-bg-orb-2 {
+  width: 250px;
+  height: 250px;
+  background: rgba(168, 85, 247, 0.25);
+  bottom: -60px;
+  right: -60px;
+  animation: floatSlow 8s ease-in-out infinite reverse;
+}
+
+.splash-bg-orb-3 {
+  width: 180px;
+  height: 180px;
+  background: rgba(245, 158, 11, 0.20);
+  top: 40%;
+  right: -40px;
+  animation: floatSlow 5s ease-in-out infinite 1s;
+}
+
+.splash-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-5);
+}
+
+.splash-logo-ring {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: splashLogo 1.0s var(--ease-spring) 0.2s both;
+}
+
+.splash-logo-ring::before,
+.splash-logo-ring::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.20);
+  animation: levelUpRing 2.5s ease-out infinite;
+}
+
+.splash-logo-ring::before {
+  inset: -12px;
+  animation-delay: 0s;
+}
+
+.splash-logo-ring::after {
+  inset: -24px;
+  animation-delay: 0.4s;
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+.splash-logo-inner {
+  width: 100px;
+  height: 100px;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.30), inset 0 1px 0 rgba(255,255,255,0.20);
+}
+
+.splash-title {
+  animation: splashText 0.8s var(--ease-spring) 0.8s both;
+  text-align: center;
+}
+
+.splash-title h1 {
+  font-size: 42px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.30);
+}
+
+.splash-title p {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.70);
+  margin: 6px 0 0;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.splash-tagline {
+  animation: splashSubtext 0.6s var(--ease-spring) 1.3s both;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.20);
+  border-radius: var(--radius-full);
+  padding: 8px 20px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.80);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.splash-progress-wrap {
+  animation: splashSubtext 0.5s var(--ease-spring) 1.6s both;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.splash-progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.splash-progress-fill {
+  height: 100%;
+  background: rgba(255,255,255,0.70);
+  border-radius: 99px;
+  animation: splashProgress 2.2s var(--ease) 1.8s both;
+  box-shadow: 0 0 10px rgba(255,255,255,0.40);
+}
+
+.splash-progress-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.50);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.splash-dots {
+  display: flex;
+  gap: 8px;
+  animation: splashSubtext 0.5s ease 2s both;
+}
+
+.splash-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.40);
+  animation: loadingDots 1.4s ease-in-out infinite;
+}
+
+.splash-dot:nth-child(2) { animation-delay: 0.2s; }
+.splash-dot:nth-child(3) { animation-delay: 0.4s; }
+
+#splashScreen.exit {
+  animation: splashExit 0.5s var(--ease-in) forwards;
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SCREEN TRANSITIONS
+════════════════════════════════════════════════════════════ */
+
+.screen {
+  display: none;
+  opacity: 0;
+}
+
+.screen.active {
+  display: flex;
+  animation: screenEnter 0.35s var(--ease-spring) both;
+}
+
+.screen.exiting {
+  animation: screenExit 0.2s var(--ease-in) forwards;
+}
+
+/* ════════════════════════════════════════════════════════════
+   STAGGERED CARD ANIMATIONS
+════════════════════════════════════════════════════════════ */
+
+.stagger-children > * {
+  opacity: 0;
+  animation: cardEnter 0.4s var(--ease-spring) both;
+}
+
+.stagger-children > *:nth-child(1)  { animation-delay: 60ms; }
+.stagger-children > *:nth-child(2)  { animation-delay: 110ms; }
+.stagger-children > *:nth-child(3)  { animation-delay: 160ms; }
+.stagger-children > *:nth-child(4)  { animation-delay: 210ms; }
+.stagger-children > *:nth-child(5)  { animation-delay: 260ms; }
+.stagger-children > *:nth-child(6)  { animation-delay: 310ms; }
+.stagger-children > *:nth-child(7)  { animation-delay: 360ms; }
+.stagger-children > *:nth-child(8)  { animation-delay: 410ms; }
+.stagger-children > *:nth-child(9)  { animation-delay: 460ms; }
+.stagger-children > *:nth-child(10) { animation-delay: 510ms; }
+
+.stagger-fast > * {
+  opacity: 0;
+  animation: fadeInUp 0.3s var(--ease-spring) both;
+}
+
+.stagger-fast > *:nth-child(1) { animation-delay: 30ms; }
+.stagger-fast > *:nth-child(2) { animation-delay: 60ms; }
+.stagger-fast > *:nth-child(3) { animation-delay: 90ms; }
+.stagger-fast > *:nth-child(4) { animation-delay: 120ms; }
+.stagger-fast > *:nth-child(5) { animation-delay: 150ms; }
+.stagger-fast > *:nth-child(6) { animation-delay: 180ms; }
+
+/* ════════════════════════════════════════════════════════════
+   INTERACTIVE ELEMENT TRANSITIONS
+════════════════════════════════════════════════════════════ */
+
+/* Button press effect */
+.btn-pressable {
+  transition: transform var(--dur-fast) var(--ease-spring),
+              box-shadow var(--dur-fast) var(--ease);
+  cursor: pointer;
+}
+
+.btn-pressable:active {
+  transform: scale(0.94) translateY(1px);
+}
+
+.btn-pressable-sm:active {
+  transform: scale(0.96);
+}
+
+.btn-pressable-lg:active {
+  transform: scale(0.92) translateY(2px);
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform var(--dur) var(--ease-spring),
+              box-shadow var(--dur) var(--ease);
+}
+
+.card-hover:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: var(--shadow-md);
+}
+
+.card-hover:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: var(--shadow-xs);
+}
+
+/* Icon bounce on tap */
+.icon-bounce:active {
+  animation: navIconBounce 0.5s var(--ease-spring) both;
+}
+
+/* Ripple effect */
+.ripple-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.30);
+  pointer-events: none;
+  transform: scale(0);
+  animation: ripple 0.6s ease-out;
+}
+
+/* ════════════════════════════════════════════════════════════
+   XP & REWARD ANIMATIONS
+════════════════════════════════════════════════════════════ */
+
+.xp-float-particle {
+  position: fixed;
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--gold);
+  pointer-events: none;
+  z-index: var(--z-top);
+  text-shadow: 0 2px 8px rgba(245, 158, 11, 0.5);
+  animation: xpFloat 1.2s var(--ease) forwards;
+}
+
+.confetti-piece {
+  position: fixed;
+  width: 8px;
+  height: 12px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: var(--z-top);
+  animation: confettiWiggle var(--dur-long) ease-in forwards;
+}
+
+.star-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: var(--z-top);
+  animation: starBurst 0.8s var(--ease) forwards;
+}
+
+/* Level up popup ring animation */
+.levelup-ring {
+  position: absolute;
+  border: 3px solid rgba(var(--accent-rgb), 0.5);
+  border-radius: 50%;
+  animation: levelUpRing 1.5s ease-out infinite;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SKELETON LOADING
+════════════════════════════════════════════════════════════ */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--bg3) 25%,
+    var(--bg2) 50%,
+    var(--bg3) 75%
+  );
+  background-size: 200px 100%;
+  animation: skeleton 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-text  { height: 14px; }
+.skeleton-title { height: 20px; width: 60%; }
+.skeleton-card  { height: 80px; border-radius: var(--radius); }
+.skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+/* ════════════════════════════════════════════════════════════
+   SHIMMER EFFECT
+════════════════════════════════════════════════════════════ */
+
+.shimmer-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+/* ════════════════════════════════════════════════════════════
+   MORPHING BACKGROUND BLOBS
+════════════════════════════════════════════════════════════ */
+
+.blob {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: morphBlob 10s ease-in-out infinite;
+}
+
+.blob-sm {
+  animation-duration: 7s;
+}
+
+.blob-fast {
+  animation-duration: 5s;
+}
+
+/* ════════════════════════════════════════════════════════════
+   TOAST NOTIFICATIONS
+════════════════════════════════════════════════════════════ */
+
+.toast {
+  position: fixed;
+  top: var(--sp-4);
+  left: 50%;
+  transform: translateX(-50%) translateY(-80px);
+  z-index: var(--z-toast);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: 12px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  max-width: 88vw;
+  transition: transform var(--dur-slow) var(--ease-spring),
+              opacity var(--dur) var(--ease);
+  opacity: 0;
+  backdrop-filter: blur(20px);
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.toast.success {
+  background: rgba(16, 185, 129, 0.92);
+  border-color: rgba(16, 185, 129, 0.60);
+  color: #fff;
+  box-shadow: var(--shadow-green);
+}
+
+.toast.error {
+  background: rgba(239, 68, 68, 0.92);
+  border-color: rgba(239, 68, 68, 0.60);
+  color: #fff;
+  box-shadow: var(--shadow-red);
+}
+
+.toast.warning {
+  background: rgba(245, 158, 11, 0.92);
+  border-color: rgba(245, 158, 11, 0.60);
+  color: #fff;
+  box-shadow: var(--shadow-gold);
+}
+
+.toast.info {
+  background: rgba(14, 165, 233, 0.92);
+  border-color: rgba(14, 165, 233, 0.60);
+  color: #fff;
+}
+
+.toast-icon { font-size: 18px; flex-shrink: 0; }
+.toast-msg  { font-size: 13px; font-weight: 700; }
+
+/* ════════════════════════════════════════════════════════════
+   XP POPUP
+════════════════════════════════════════════════════════════ */
+
+#xpPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  z-index: var(--z-popup);
+  background: var(--surface);
+  border: 2px solid rgba(245, 158, 11, 0.40);
+  border-radius: var(--radius-xl);
+  padding: 32px 40px;
+  text-align: center;
+  box-shadow: var(--shadow-gold), var(--shadow-xl);
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--dur-slow) var(--ease-spring);
+}
+
+#xpPopup.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.xp-popup-icon {
+  font-size: 52px;
+  animation: bounce 1s var(--ease-spring) 0.1s both;
+  display: block;
+  margin-bottom: var(--sp-2);
+}
+
+#xpAmt {
+  font-size: 44px;
+  font-weight: 900;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+  animation: scaleInBounce var(--dur-slow) var(--ease-spring) 0.15s both;
+  text-shadow: none;
+  filter: drop-shadow(0 4px 12px rgba(245,158,11,0.40));
+}
+
+.xp-popup-label {
+  font-size: 13px;
+  color: var(--text3);
+  font-weight: 700;
+  margin-top: var(--sp-1);
+  animation: fadeInUp var(--dur) ease 0.3s both;
+}
+
+/* ════════════════════════════════════════════════════════════
+   LEVEL UP POPUP
+════════════════════════════════════════════════════════════ */
+
+#levelupPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  z-index: var(--z-popup);
+  background: var(--surface);
+  border-radius: var(--radius-2xl);
+  padding: 40px 36px;
+  text-align: center;
+  width: min(340px, 88vw);
+  box-shadow: var(--shadow-2xl), var(--shadow-accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--dur-slower) var(--ease-spring);
+  overflow: hidden;
+}
+
+#levelupPopup::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grad-mesh-1);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#levelupPopup.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+.lup-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.lup-ring {
+  position: absolute;
+  border: 2px solid rgba(var(--accent-rgb), 0.3);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+#levelupPopup.show .lup-ring:nth-child(1) {
+  width: 100px; height: 100px;
+  animation: levelUpRing 1.8s ease-out 0.2s infinite;
+}
+#levelupPopup.show .lup-ring:nth-child(2) {
+  width: 160px; height: 160px;
+  animation: levelUpRing 1.8s ease-out 0.5s infinite;
+}
+#levelupPopup.show .lup-ring:nth-child(3) {
+  width: 240px; height: 240px;
+  animation: levelUpRing 1.8s ease-out 0.8s infinite;
+}
+
+#lupIcon {
+  font-size: 64px;
+  display: block;
+  position: relative;
+  z-index: 1;
+  animation: scaleInSpring var(--dur-slower) var(--ease) 0.1s both;
+  filter: drop-shadow(0 8px 24px rgba(var(--accent-rgb), 0.4));
+  margin-bottom: var(--sp-3);
+}
+
+.lup-badge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+  animation: fadeIn var(--dur) ease 0.4s both;
+  position: relative;
+}
+
+.lup-level-name {
+  font-size: 32px;
+  font-weight: 900;
+  position: relative;
+  animation: scaleInBounce var(--dur-slow) var(--ease-spring) 0.2s both;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin: var(--sp-2) 0;
+}
+
+.lup-class-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text2);
+  animation: fadeInUp var(--dur) ease 0.5s both;
+  position: relative;
+}
+
+.lup-close {
+  margin-top: var(--sp-5);
+  padding: 12px 32px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: var(--grad-primary);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: var(--shadow-accent);
+  animation: fadeInUp var(--dur-slow) var(--ease-spring) 0.6s both;
+  position: relative;
+  transition: transform var(--dur-fast) var(--ease-spring),
+              box-shadow var(--dur-fast);
+}
+
+.lup-close:active {
+  transform: scale(0.95);
+  box-shadow: var(--shadow-accent2);
+}
+
+/* ════════════════════════════════════════════════════════════
+   BADGE POPUP
+════════════════════════════════════════════════════════════ */
+
+#badgePopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.6) rotate(-8deg);
+  z-index: var(--z-popup);
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  text-align: center;
+  width: min(300px, 85vw);
+  box-shadow: var(--shadow-xl), var(--shadow-accent);
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--dur-slower) var(--ease-spring);
+  border: 1px solid var(--border2);
+}
+
+#badgePopup.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  pointer-events: auto;
+}
+
+#bpIcon {
+  font-size: 56px;
+  display: block;
+  animation: scaleInBounce var(--dur-slow) var(--ease-spring) 0.1s both;
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.15));
+  margin-bottom: var(--sp-3);
+}
+
+#bpName {
+  font-size: 22px;
+  font-weight: 900;
+  display: block;
+  animation: fadeInUp var(--dur) var(--ease-spring) 0.2s both;
+  color: var(--text);
+}
+
+#bpDesc {
+  font-size: 13px;
+  color: var(--text2);
+  display: block;
+  animation: fadeInUp var(--dur) ease 0.35s both;
+  line-height: var(--lh-normal);
+  margin-top: var(--sp-2);
+}
+
+/* ════════════════════════════════════════════════════════════
+   OVERLAY
+════════════════════════════════════════════════════════════ */
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  z-index: var(--z-overlay);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow) var(--ease);
+}
+
+#overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ════════════════════════════════════════════════════════════
+   DAILY STREAK FLAME
+════════════════════════════════════════════════════════════ */
+
+.streak-flame {
+  animation: fireRise 1.2s ease-in-out infinite;
+  display: inline-block;
+}
+
+.streak-flame.big {
+  animation-duration: 0.8s;
+}
+
+/* ════════════════════════════════════════════════════════════
+   ANIMATED BACKGROUND GRADIENTS
+════════════════════════════════════════════════════════════ */
+
+.hero-gradient-bg {
+  background: var(--grad-hero2);
+  background-size: 200% 200%;
+  animation: aurora 8s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-gradient-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--noise);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.animated-border {
+  position: relative;
+  background-clip: padding-box;
+}
+
+.animated-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(var(--border-angle, 0deg),
+    rgba(var(--accent-rgb), 0.6),
+    transparent 40%,
+    transparent 60%,
+    rgba(var(--accent-rgb), 0.4)
+  );
+  animation: borderRotate 3s linear infinite;
+  z-index: -1;
+}
+
+/* ════════════════════════════════════════════════════════════
+   QUIZ ANSWER ANIMATIONS
+════════════════════════════════════════════════════════════ */
+
+.answer-btn {
+  transition: transform var(--dur-fast) var(--ease-spring),
+              background var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease);
+}
+
+.answer-btn:not(:disabled):active {
+  transform: scale(0.96) translateY(1px);
+}
+
+.answer-btn.correct {
+  animation: correctFlash 0.5s var(--ease) both;
+  border-color: var(--success) !important;
+  background: var(--success-bg) !important;
+  box-shadow: var(--shadow-green) !important;
+}
+
+.answer-btn.wrong {
+  animation: wrongFlash 0.5s var(--ease) both, shake 0.4s var(--ease) both;
+  border-color: var(--error) !important;
+  background: var(--error-bg) !important;
+  box-shadow: var(--shadow-red) !important;
+}
+
+.answer-btn.reveal {
+  animation: fadeInUp var(--dur-slow) var(--ease-spring) both;
+}
+
+/* ════════════════════════════════════════════════════════════
+   PROGRESS BAR ANIMATIONS
+════════════════════════════════════════════════════════════ */
+
+.progress-bar-animated {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-animated::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.35) 50%,
+    transparent 100%
+  );
+  animation: loadingBar 2s ease-in-out infinite;
+}
+
+/* ════════════════════════════════════════════════════════════
+   RAMADAN LANTERNS
+════════════════════════════════════════════════════════════ */
+
+.lantern {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: sway 2.5s ease-in-out infinite;
+}
+
+.lantern:nth-child(even) {
+  animation-direction: reverse;
+  animation-duration: 3s;
+}
+
+.lantern-line {
+  width: 1px;
+  height: 16px;
+  background: rgba(245, 158, 11, 0.5);
+}
+
+.lantern span {
+  font-size: 24px;
+  animation: floatSlow 2s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(245, 158, 11, 0.5));
+}
+
+/* ════════════════════════════════════════════════════════════
+   AI TYPING INDICATOR
+════════════════════════════════════════════════════════════ */
+
+.ai-typing {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 16px;
+}
+
+.ai-typing-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: loadingDots 1.4s ease-in-out infinite;
+}
+
+.ai-typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.ai-typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+/* ════════════════════════════════════════════════════════════
+   SMOOTH TRANSITIONS FOR INTERACTIVE ELEMENTS
+════════════════════════════════════════════════════════════ */
+
+a, button, [role="button"], [onclick] {
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.smooth-transition {
+  transition: all var(--dur) var(--ease);
+}
+
+.transition-colors {
+  transition: color var(--dur) var(--ease),
+              background-color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease);
+}
+
+.transition-transform {
+  transition: transform var(--dur) var(--ease-spring);
+}
+
+.transition-opacity {
+  transition: opacity var(--dur) var(--ease);
+}
+
+.transition-shadow {
+  transition: box-shadow var(--dur) var(--ease);
+}
+
+/* ══ Performance: will-change for GPU-composited elements ══ */
+.splash-orb-1, .splash-orb-2, .splash-orb-3 {
+  will-change: transform, opacity;
+}
+.splash-logo-box, .splash-ring {
+  will-change: transform;
+}
+.home-plan-item {
+  will-change: transform;
+}
+.home-weekly-col .home-wbar {
+  will-change: height;
+}
+.option-btn {
+  will-change: transform, background-color;
+}
+.toast-item {
+  will-change: transform, opacity;
+}
+.bottom-sheet {
+  will-change: transform;
+}
+.nav-indicator {
+  will-change: transform;
+}
+
+/* ══════════════════════════════════════════════════════════
+   SCREEN TRANSITION SYSTEM — slide between screens smoothly
+══════════════════════════════════════════════════════════ */
+
+@keyframes screenEnter {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes screenEnterLeft {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes screenEnterRight {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ══ Ripple effect ══ */
+@keyframes ripple {
+  from { transform: scale(0); opacity: 0.35; }
+  to   { transform: scale(4); opacity: 0; }
+}
+
+/* ══ Shimmer for skeleton loading ══ */
+@keyframes skeletonShimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* ══ Number count-up flash ══ */
+@keyframes numPop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.18); color: var(--accent); }
+  100% { transform: scale(1); }
+}
+
+/* ══ Staggered list entry ══ */
+@keyframes listItemIn {
+  from { opacity: 0; transform: translateX(18px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ══ Glow pulse for active elements ══ */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(108,99,255,0); }
+  50%       { box-shadow: 0 0 0 6px rgba(108,99,255,0.18); }
+}
+
+/* ══ Tada celebration ══ */
+@keyframes tada {
+  0%   { transform: scale(1); }
+  10%  { transform: scale(0.9) rotate(-3deg); }
+  20%  { transform: scale(0.9) rotate(-3deg); }
+  30%  { transform: scale(1.1) rotate(3deg); }
+  40%  { transform: scale(1.1) rotate(-3deg); }
+  50%  { transform: scale(1.1) rotate(3deg); }
+  60%  { transform: scale(1.1) rotate(-3deg); }
+  70%  { transform: scale(1.1) rotate(3deg); }
+  80%  { transform: scale(1.1) rotate(-3deg); }
+  90%  { transform: scale(1.1) rotate(3deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* ══ Bounce in from bottom ══ */
+@keyframes bounceInUp {
+  0%   { opacity: 0; transform: translateY(40px) scale(0.9); }
+  60%  { opacity: 1; transform: translateY(-8px) scale(1.02); }
+  80%  { transform: translateY(4px) scale(0.99); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ══ Floating badge ══ */
+@keyframes floatBadge {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%       { transform: translateY(-6px) rotate(1deg); }
+}
+
+/* ══ XP bar fill animation ══ */
+@keyframes xpFillGlow {
+  0%   { box-shadow: 0 0 0 0 rgba(108,99,255,0.6); }
+  70%  { box-shadow: 0 0 0 8px rgba(108,99,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(108,99,255,0); }
+}
+
+/* ══ Correct answer flash ══ */
+@keyframes correctFlash {
+  0%   { background: var(--surface); }
+  30%  { background: rgba(16,185,129,0.18); }
+  100% { background: var(--surface); }
+}
+
+/* ══ Wrong answer shake ══ */
+@keyframes wrongShake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-6px); }
+  40%       { transform: translateX(6px); }
+  60%       { transform: translateX(-4px); }
+  80%       { transform: translateX(4px); }
+}
+
+/* ══ Streak fire ══ */
+@keyframes fireFlicker {
+  0%, 100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+  25%       { transform: scale(1.08) rotate(-2deg); filter: brightness(1.15); }
+  75%       { transform: scale(0.95) rotate(2deg); filter: brightness(0.9); }
+}
+
+/* ══ Card hover lift ══ */
+@keyframes cardLift {
+  from { transform: translateY(0) scale(1); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  to   { transform: translateY(-3px) scale(1.01); box-shadow: 0 12px 32px rgba(108,99,255,0.15); }
+}
+
+/* ══ Progress ring draw ══ */
+@keyframes ringDraw {
+  from { stroke-dashoffset: 364; }
+  to   { stroke-dashoffset: var(--target-offset, 0); }
+}
+
+/* ══ Success checkmark ══ */
+@keyframes checkDraw {
+  from { stroke-dashoffset: 50; opacity: 0; }
+  to   { stroke-dashoffset: 0; opacity: 1; }
+}
+
+/* ══ Confetti particle ══ */
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ══ Nav pill slide ══ */
+@keyframes navPillSlide {
+  from { opacity: 0; transform: scaleX(0.5); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+/* ══ Typing dots ══ */
+@keyframes typingDot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30%            { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ══ Orb drift ══ */
+@keyframes orbDrift {
+  0%   { transform: translate(0,0) scale(1); }
+  33%  { transform: translate(20px,-15px) scale(1.05); }
+  66%  { transform: translate(-15px,10px) scale(0.97); }
+  100% { transform: translate(0,0) scale(1); }
+}
+
+/* ══ Notification dot ping ══ */
+@keyframes notifPing {
+  0%   { transform: scale(1); opacity: 1; }
+  75%, 100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* ══ Performance: will-change for GPU-composited elements ══ */
+.splash-orb-1, .splash-orb-2, .splash-orb-3 {
+  will-change: transform, opacity;
+}
+.splash-logo-box, .splash-ring {
+  will-change: transform;
+}
+.home-plan-item, .home-quick-btn {
+  will-change: transform;
+}
+.home-weekly-col .home-wbar {
+  will-change: height;
+}
+.option-btn, .quiz-answer-btn {
+  will-change: transform, background-color;
+}
+.toast-item {
+  will-change: transform, opacity;
+}
+.bottom-sheet {
+  will-change: transform;
+}
+.nav-indicator {
+  will-change: transform;
+}
