@@ -1,0 +1,2134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#6c63ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>GRIT Learn — بكالوريا ٢٠٢٦</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet"></noscript>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="variables.css">
+  <link rel="stylesheet" href="animations.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="components.css">
+  <link rel="stylesheet" href="screens.css">
+  <link rel="stylesheet" href="enhancements.css">
+
+  <!-- SVG Gradient Defs (reusable across the app) -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <linearGradient id="quizResultGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="#6c63ff"/>
+        <stop offset="100%" stop-color="#a855f7"/>
+      </linearGradient>
+      <linearGradient id="pomoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%"   stop-color="#6c63ff"/>
+        <stop offset="100%" stop-color="#a855f7"/>
+      </linearGradient>
+      <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%"   stop-color="#fcd34d"/>
+        <stop offset="100%" stop-color="#d97706"/>
+      </linearGradient>
+      <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%"   stop-color="#10b981"/>
+        <stop offset="100%" stop-color="#059669"/>
+      </linearGradient>
+      <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%"   stop-color="#f87171"/>
+        <stop offset="100%" stop-color="#dc2626"/>
+      </linearGradient>
+    </defs>
+  </svg>
+</head>
+
+<body>
+<div id="app">
+
+  <!-- ══════════════════════════════════════════════
+       SPLASH SCREEN
+  ══════════════════════════════════════════════ -->
+  <div id="splashScreen">
+    <div class="splash-bg-layer"></div>
+    <div class="splash-noise"></div>
+
+    <!-- Ambient orbs -->
+    <div class="splash-orb-1"></div>
+    <div class="splash-orb-2"></div>
+    <div class="splash-orb-3"></div>
+
+    <!-- Stars -->
+    <div class="splash-stars" id="splashStars"></div>
+
+    <div class="splash-content">
+      <!-- Logo -->
+      <div class="splash-logo-wrap">
+        <div class="splash-ring splash-ring-1"></div>
+        <div class="splash-ring splash-ring-2"></div>
+        <div class="splash-ring splash-ring-3"></div>
+        <div class="splash-logo-box">🎓</div>
+      </div>
+
+      <!-- Title -->
+      <div class="splash-title-block">
+        <div class="splash-app-name">GRIT</div>
+        <div class="splash-app-tagline">LEARN · BAC 2026</div>
+      </div>
+
+      <!-- Live badge -->
+      <div class="splash-live-badge">
+        <span class="splash-live-dot"></span>
+        مساعدك للبكالوريا
+      </div>
+
+      <!-- Loader -->
+      <div class="splash-loader-wrap">
+        <div class="splash-loader-bar">
+          <div class="splash-loader-fill"></div>
+        </div>
+        <div class="splash-loader-dots">
+          <div class="splash-loader-dot"></div>
+          <div class="splash-loader-dot"></div>
+          <div class="splash-loader-dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="splash-footer">
+      @bacDz_09 · v9.0
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       ONBOARDING OVERLAY
+  ══════════════════════════════════════════════ -->
+  <div id="onboardingOverlay" style="display:none">
+    <div class="ob-dark-bg"></div>
+
+    <!-- Illustration zone -->
+    <div class="ob-illus-zone">
+      <div class="ob-illus-glow"></div>
+      <div class="ob-illus-ring"></div>
+      <div id="obIllus" class="ob-illus-emoji">🎓</div>
+    </div>
+
+    <!-- Bottom sheet -->
+    <div class="ob-sheet">
+      <div class="ob-handle-row"><div class="ob-handle"></div></div>
+
+      <!-- Steps -->
+      <div class="ob-steps-area">
+
+        <!-- Step 1: Welcome -->
+        <div class="ob-step active" data-step="1">
+          <div class="ob-step-badge">مرحباً 👋</div>
+          <div class="ob-title">أهلاً بك في GRIT Learn</div>
+          <div class="ob-sub">
+            تطبيقك الذكي للتحضير لبكالوريا 2026 —<br>
+            تمارين، ملخصات، مؤقت بومودورو، وأكثر.
+          </div>
+
+          <!-- Features list -->
+          <div style="display:flex;flex-direction:column;gap:10px;width:100%;margin-bottom:24px">
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:13px">
+              <span style="font-size:22px">📚</span>
+              <div>
+                <div style="font-size:13px;font-weight:900;color:var(--text)">بنك أسئلة ضخم</div>
+                <div style="font-size:11px;color:var(--text3);font-weight:600">أسئلة لكل المواد والمستويات</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:13px">
+              <span style="font-size:22px">🏆</span>
+              <div>
+                <div style="font-size:13px;font-weight:900;color:var(--text)">نظام XP والمستويات</div>
+                <div style="font-size:11px;color:var(--text3);font-weight:600">تقدّم وتنافس مع الآخرين</div>
+              </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface2);border:1px solid var(--border);border-radius:13px">
+              <span style="font-size:22px">🤖</span>
+              <div>
+                <div style="font-size:13px;font-weight:900;color:var(--text)">مساعد ذكاء اصطناعي</div>
+                <div style="font-size:11px;color:var(--text3);font-weight:600">اشرح لي أي درس أو مفهوم</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2: Name -->
+        <div class="ob-step" data-step="2">
+          <div class="ob-step-badge">الخطوة 1 من 2</div>
+          <div class="ob-title">ما اسمك؟</div>
+          <div class="ob-sub">سنستخدم اسمك لتخصيص تجربتك</div>
+          <input
+            type="text"
+            id="obNameInput"
+            class="ob-name-input"
+            placeholder="اكتب اسمك هنا..."
+            maxlength="20"
+            autocomplete="off"
+          >
+          <div style="font-size:11px;color:var(--text4);font-weight:600">مثال: أحمد، فاطمة، يوسف...</div>
+        </div>
+
+        <!-- Step 3: Branch -->
+        <div class="ob-step" data-step="3">
+          <div class="ob-step-badge">الخطوة 2 من 2</div>
+          <div class="ob-title">اختر شعبتك</div>
+          <div class="ob-sub">سنعرض لك المواد المناسبة لشعبتك</div>
+          <div class="ob-branch-grid">
+            <div class="ob-branch-card" data-branch="science">
+              <div class="ob-branch-check">✓</div>
+              <div class="ob-branch-emoji">🔬</div>
+              <div class="ob-branch-name">علوم تجريبية</div>
+              <div class="ob-branch-desc">رياضيات · فيزياء · علوم · كيمياء</div>
+            </div>
+            <div class="ob-branch-card" data-branch="math">
+              <div class="ob-branch-check">✓</div>
+              <div class="ob-branch-emoji">📐</div>
+              <div class="ob-branch-name">رياضيات</div>
+              <div class="ob-branch-desc">رياضيات · فيزياء · فلسفة</div>
+            </div>
+            <div class="ob-branch-card" data-branch="letters">
+              <div class="ob-branch-check">✓</div>
+              <div class="ob-branch-emoji">📖</div>
+              <div class="ob-branch-name">آداب وفلسفة</div>
+              <div class="ob-branch-desc">عربية · تاريخ · فلسفة · فرنسية</div>
+            </div>
+            <div class="ob-branch-card" data-branch="manage">
+              <div class="ob-branch-check">✓</div>
+              <div class="ob-branch-emoji">📊</div>
+              <div class="ob-branch-name">تسيير واقتصاد</div>
+              <div class="ob-branch-desc">اقتصاد · رياضيات · تاريخ</div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /ob-steps-area -->
+
+      <!-- Progress dots -->
+      <div class="ob-dots-row">
+        <div class="ob-dot active" data-dot="1"></div>
+        <div class="ob-dot" data-dot="2"></div>
+        <div class="ob-dot" data-dot="3"></div>
+      </div>
+
+      <!-- CTA -->
+      <button class="ob-cta-btn" id="obCtaBtn" onclick="obNext()">
+        ابدأ رحلتك 🚀
+      </button>
+
+    </div><!-- /ob-sheet -->
+  </div><!-- /onboardingOverlay -->
+
+
+  <!-- ══════════════════════════════════════════════
+       MAIN APP WRAPPER
+  ══════════════════════════════════════════════ -->
+  <div id="mainApp" style="display:none; flex-direction:column; height:100%; position:relative">
+
+    <!-- Ramadan header (conditional) -->
+    <div id="ramadanHeader" class="home-ramadan" style="display:none">
+      <div id="lanterns">🏮🏮</div>
+      <div id="ramMsg"></div>
+      <div class="home-ram-chip" id="ramDayChip">يوم 1</div>
+    </div>
+
+    <!-- ══ SCREENS CONTAINER ══ -->
+    <div id="screensContainer" style="flex:1;position:relative;overflow:hidden">
+
+      <!-- ════════════════════════════════════════
+           HOME SCREEN
+      ════════════════════════════════════════ -->
+      <div id="homeScreen" class="screen active">
+        <div class="content">
+
+          <!-- Hero -->
+          <div class="home-hero">
+            <div class="home-hero-gradient"></div>
+            <div class="home-hero-noise"></div>
+            <div class="home-hero-orb-a"></div>
+            <div class="home-hero-orb-b"></div>
+
+            <div class="home-hero-content">
+              <!-- Top bar -->
+              <div class="home-top-bar">
+                <div>
+                  <div class="home-greeting-time" id="homeGreetTime">صباح الخير ☀️</div>
+                  <div class="home-greeting-main" id="homeGreetName">أهلاً، طالب!</div>
+                  <div class="home-greeting-sub" id="homeGreetSub">استمر في التقدم 💪</div>
+                </div>
+                <div class="home-avatar-btn" id="homeAvatarBtn" onclick="showScreen('profileScreen')">
+                  <span id="homeAvatarEmoji">🎓</span>
+                  <div class="home-notif-dot" id="homeNotifDot" style="display:none"></div>
+                </div>
+              </div>
+
+              <!-- BAC countdown strip -->
+              <div class="home-bac-strip" onclick="showScreen('examScreen')">
+                <div class="home-bac-emoji">📅</div>
+                <div class="home-bac-center">
+                  <div class="home-bac-days" id="homeBacDays">---</div>
+                  <div class="home-bac-label">يوم متبقي على البكالوريا</div>
+                </div>
+                <div class="home-bac-right">
+                  <div class="home-bac-date">7 جوان 2026</div>
+                  <div class="home-bac-mini-bar">
+                    <div class="home-bac-mini-fill" id="homeBacFill" style="width:0%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- XP Level row -->
+              <div class="home-level-row">
+                <div class="home-level-header">
+                  <div class="home-level-badge-wrap">
+                    <span id="homeLevelBadge" class="level-badge bronze">🥉 برونزي</span>
+                    <span class="home-xp-val" id="homeXpVal">0 XP</span>
+                  </div>
+                  <span class="home-xp-next" id="homeXpNext">0 للمستوى التالي</span>
+                </div>
+                <div class="home-xp-bar-track">
+                  <div class="home-xp-bar-fill" id="homeXpFill" style="width:0%"></div>
+                </div>
+              </div>
+
+              <!-- Stats row -->
+              <div class="home-stats-row">
+                <div class="home-stat-chip" onclick="showScreen('pointsScreen')">
+                  <div class="home-stat-val" id="homeStatStreak">0</div>
+                  <div class="home-stat-lbl">🔥 سلسلة</div>
+                </div>
+                <div class="home-stat-chip" onclick="showScreen('quizScreen')">
+                  <div class="home-stat-val" id="homeStatTotal">0</div>
+                  <div class="home-stat-lbl">📝 سؤال</div>
+                </div>
+                <div class="home-stat-chip" onclick="showScreen('pointsScreen')">
+                  <div class="home-stat-val" id="homeStatAcc">0%</div>
+                  <div class="home-stat-lbl">🎯 دقة</div>
+                </div>
+                <div class="home-stat-chip" onclick="showScreen('leaderScreen')">
+                  <div class="home-stat-val" id="homeStatRank">#--</div>
+                  <div class="home-stat-lbl">🏆 ترتيب</div>
+                </div>
+              </div>
+            </div><!-- /hero-content -->
+          </div><!-- /hero -->
+
+          <!-- ── Body ── -->
+          <div class="home-body">
+
+            <!-- Quick actions -->
+            <div class="home-section">
+              <div class="home-section-head">
+                <div class="home-section-title">
+                  <div class="home-section-icon" style="background:rgba(108,99,255,0.10)">⚡</div>
+                  وصول سريع
+                </div>
+              </div>
+              <div class="home-quick-grid">
+                <div class="home-quick-btn ripple-host" onclick="showScreen('quizScreen');addRipple(event)">
+                  <div class="home-quick-icon" style="background:rgba(108,99,255,0.10)">📝</div>
+                  <div class="home-quick-label">كويز</div>
+                </div>
+                <div class="home-quick-btn ripple-host" onclick="showScreen('examScreen');addRipple(event)">
+                  <div class="home-quick-icon" style="background:rgba(16,185,129,0.10)">📋</div>
+                  <div class="home-quick-label">امتحان</div>
+                </div>
+                <div class="home-quick-btn ripple-host" onclick="showScreen('summariesScreen');addRipple(event)">
+                  <div class="home-quick-icon" style="background:rgba(245,158,11,0.10)">📚</div>
+                  <div class="home-quick-label">ملخصات</div>
+                </div>
+                <div class="home-quick-btn ripple-host" onclick="showScreen('aiScreen');addRipple(event)">
+                  <div class="home-quick-icon" style="background:rgba(168,85,247,0.10)">🤖</div>
+                  <div class="home-quick-label">ذكاء اصطناعي</div>
+                </div>
+                <div class="home-quick-btn ripple-host" onclick="showScreen('pomodoroScreen');addRipple(event)">
+                  <div class="home-quick-icon" style="background:rgba(239,68,68,0.10)">⏱</div>
+                  <div class="home-quick-label">بومودورو</div>
+                </div>
+                <div class="home-quick-btn ripple-host" onclick="showScreen('tdlScreen');addRipple(event)">
+                  <div class="home-quick-icon" style="background:rgba(20,184,166,0.10)">✅</div>
+                  <div class="home-quick-label">مهامي</div>
+                </div>
+                <div class="home-quick-btn ripple-host" onclick="showScreen('azkarScreen');addRipple(event)">
+                  <div class="home-quick-icon" style="background:rgba(217,119,6,0.10)">📿</div>
+                  <div class="home-quick-label">أذكار</div>
+                </div>
+                <div class="home-quick-btn ripple-host" onclick="showScreen('studyPlanScreen');addRipple(event)">
+                  <div class="home-quick-icon" style="background:rgba(16,185,129,0.10)">📅</div>
+                  <div class="home-quick-label">خطة</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Motivation card -->
+            <div class="home-motiv-card" id="homeMotivCard">
+              <div class="home-motiv-icon" id="homeMotivIcon">💡</div>
+              <div class="home-motiv-text" id="homeMotivText">النجاح ليس صدفة، هو نتيجة عمل متواصل وإصرار لا يلين.</div>
+            </div>
+
+            <!-- Streak card -->
+            <div class="home-section">
+              <div class="home-section-head">
+                <div class="home-section-title">
+                  <div class="home-section-icon" style="background:rgba(245,158,11,0.10)">🔥</div>
+                  سلسلة المذاكرة
+                </div>
+                <div class="home-section-more" onclick="showScreen('pointsScreen')">عرض الكل</div>
+              </div>
+              <div class="home-streak-card">
+                <div class="home-streak-flame">🔥</div>
+                <div>
+                  <div class="home-streak-val" id="homeStreakVal">0</div>
+                  <div class="home-streak-lbl">يوم متواصل</div>
+                </div>
+                <div class="home-streak-days" id="homeStreakDots">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Daily plan -->
+            <div class="home-section">
+              <div class="home-section-head">
+                <div class="home-section-title">
+                  <div class="home-section-icon" style="background:rgba(16,185,129,0.10)">📅</div>
+                  خطة اليوم
+                </div>
+                <div class="home-section-more" onclick="showScreen('quizScreen')">ابدأ</div>
+              </div>
+              <div class="home-plan-list" id="homePlanList">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Weekly chart -->
+            <div class="home-section">
+              <div class="home-section-head">
+                <div class="home-section-title">
+                  <div class="home-section-icon" style="background:rgba(108,99,255,0.10)">📊</div>
+                  نشاط الأسبوع
+                </div>
+                <div class="home-section-more" onclick="showScreen('pointsScreen')">تفاصيل</div>
+              </div>
+              <div class="home-weekly">
+                <div class="home-weekly-lbl">
+                  <span>الأسئلة اليومية</span>
+                  <span id="homeWeeklyTotal" style="color:var(--accent);font-weight:900">0 هذا الأسبوع</span>
+                </div>
+                <div class="home-weekly-bars" id="homeWeeklyBars">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /home-body -->
+        </div><!-- /content -->
+      </div><!-- /homeScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           QUIZ SCREEN
+      ════════════════════════════════════════ -->
+      <div id="quizScreen" class="screen">
+        <div class="content" style="display:flex;flex-direction:column">
+
+          <!-- Quiz setup view -->
+          <div id="quizSetupView">
+            <!-- Header -->
+            <div style="padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top));background:var(--surface-glass);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+              <div style="font-size:17px;font-weight:900;color:var(--text)">📝 اختبار ذكي</div>
+              <div style="font-size:12px;font-weight:800;color:var(--accent);background:var(--overlay-medium);border:1px solid rgba(108,99,255,0.18);border-radius:999px;padding:5px 12px" id="quizAdaptBadge">تكيّفي ✨</div>
+            </div>
+
+            <div class="quiz-setup-scroll">
+
+              <!-- Adaptive hint -->
+              <div class="adaptive-badge show" id="adaptiveBadge">
+                <span class="adaptive-badge-dot"></span>
+                الصعوبة تتكيف مع مستواك تلقائياً
+              </div>
+
+              <!-- Subject selection -->
+              <div class="quiz-config-block">
+                <div class="quiz-config-header">
+                  <div class="quiz-config-header-icon">📚</div>
+                  <div class="quiz-config-title">اختر المادة</div>
+                </div>
+                <div id="quizSubjectTabs">
+                  <button class="tab-btn active" data-subj="all">كل المواد</button>
+                  <button class="tab-btn" data-subj="math">📐 رياضيات</button>
+                  <button class="tab-btn" data-subj="physics">⚡ فيزياء</button>
+                  <button class="tab-btn" data-subj="arabic">📖 عربية</button>
+                  <button class="tab-btn" data-subj="history">🏛 تاريخ</button>
+                  <button class="tab-btn" data-subj="english">🇬🇧 إنجليزية</button>
+                  <button class="tab-btn" data-subj="french">🇫🇷 فرنسية</button>
+                  <button class="tab-btn" data-subj="islamic">☪️ إسلامية</button>
+                  <button class="tab-btn" data-subj="philosophy">🧠 فلسفة</button>
+                  <button class="tab-btn" data-subj="science">🧬 علوم</button>
+                  <button class="tab-btn" data-subj="chemistry">🧪 كيمياء</button>
+                  <button class="tab-btn" data-subj="economics">📊 اقتصاد</button>
+                </div>
+              </div>
+
+              <!-- Difficulty -->
+              <div class="quiz-config-block">
+                <div class="quiz-config-header">
+                  <div class="quiz-config-header-icon">🎯</div>
+                  <div class="quiz-config-title">مستوى الصعوبة</div>
+                </div>
+                <div class="diff-grid">
+                  <div class="diff-btn" data-diff="auto">
+                    <div class="diff-icon">🤖</div>
+                    <div class="diff-name">تلقائي</div>
+                    <div class="diff-desc">يتكيف معك</div>
+                  </div>
+                  <div class="diff-btn active" data-diff="easy">
+                    <div class="diff-icon">🌱</div>
+                    <div class="diff-name">سهل</div>
+                    <div class="diff-desc">للمراجعة</div>
+                  </div>
+                  <div class="diff-btn" data-diff="medium">
+                    <div class="diff-icon">⚡</div>
+                    <div class="diff-name">متوسط</div>
+                    <div class="diff-desc">الأكثر شيوعاً</div>
+                  </div>
+                  <div class="diff-btn" data-diff="hard">
+                    <div class="diff-icon">🔥</div>
+                    <div class="diff-name">صعب</div>
+                    <div class="diff-desc">للمتقدمين</div>
+                  </div>
+                  <div class="diff-btn" data-diff="mixed">
+                    <div class="diff-icon">🎲</div>
+                    <div class="diff-name">مختلط</div>
+                    <div class="diff-desc">متنوع</div>
+                  </div>
+                  <div class="diff-btn" data-diff="weak">
+                    <div class="diff-icon">🎪</div>
+                    <div class="diff-name">نقاط ضعفي</div>
+                    <div class="diff-desc">تحسين مستوى</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mode -->
+              <div class="quiz-config-block">
+                <div class="quiz-config-header">
+                  <div class="quiz-config-header-icon">⚙️</div>
+                  <div class="quiz-config-title">نمط الاختبار</div>
+                </div>
+                <div class="mode-grid">
+                  <div class="mode-btn active" data-mode="normal">
+                    <div class="mode-icon">📝</div>
+                    <div class="mode-name">عادي</div>
+                  </div>
+                  <div class="mode-btn" data-mode="timed">
+                    <div class="mode-icon">⏱</div>
+                    <div class="mode-name">مؤقت</div>
+                  </div>
+                  <div class="mode-btn" data-mode="sudden">
+                    <div class="mode-icon">💀</div>
+                    <div class="mode-name">موت مفاجئ</div>
+                  </div>
+                  <div class="mode-btn" data-mode="review">
+                    <div class="mode-icon">🔄</div>
+                    <div class="mode-name">مراجعة</div>
+                  </div>
+                  <div class="mode-btn" data-mode="streak">
+                    <div class="mode-icon">🔥</div>
+                    <div class="mode-name">سلسلة</div>
+                  </div>
+                  <div class="mode-btn" data-mode="challenge">
+                    <div class="mode-icon">🏆</div>
+                    <div class="mode-name">تحدي</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Count selector -->
+              <div class="quiz-config-block">
+                <div class="quiz-config-header">
+                  <div class="quiz-config-header-icon">🔢</div>
+                  <div class="quiz-config-title">عدد الأسئلة</div>
+                </div>
+                <div style="display:flex;gap:8px;flex-wrap:wrap">
+                  <div class="diff-btn active" data-count="10" style="flex:1;min-width:60px">
+                    <div class="diff-icon">🔟</div>
+                    <div class="diff-name">10</div>
+                  </div>
+                  <div class="diff-btn" data-count="20" style="flex:1;min-width:60px">
+                    <div class="diff-icon">2️⃣0️⃣</div>
+                    <div class="diff-name">20</div>
+                  </div>
+                  <div class="diff-btn" data-count="30" style="flex:1;min-width:60px">
+                    <div class="diff-icon">🔥</div>
+                    <div class="diff-name">30</div>
+                  </div>
+                  <div class="diff-btn" data-count="50" style="flex:1;min-width:60px">
+                    <div class="diff-icon">💪</div>
+                    <div class="diff-name">50</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Start -->
+              <button class="quiz-start-btn" onclick="loadQuizQuestions()">
+                🚀 ابدأ الاختبار
+              </button>
+
+            </div><!-- /quiz-setup-scroll -->
+          </div><!-- /quizSetupView -->
+
+          <!-- Active quiz view -->
+          <div id="quizActiveView" style="display:none;flex-direction:column;flex:1">
+
+            <!-- Header -->
+            <div class="quiz-active-header">
+              <div class="quiz-header-top">
+                <div class="quiz-q-pill" id="quizQPill">س 1 / 10</div>
+                <div class="quiz-prog-track">
+                  <div class="quiz-prog-fill" id="quizProgFill" style="width:0%"></div>
+                </div>
+                <div class="quiz-timer-badge" id="quizTimerBadge">⏱ --:--</div>
+              </div>
+              <div class="quiz-header-meta">
+                <div class="quiz-subject-tag" id="quizSubjectTag">رياضيات</div>
+                <div class="quiz-mode-tag" id="quizModeTag">عادي</div>
+                <div class="quiz-score-live">
+                  <span class="quiz-score-correct" id="quizScoreOk">✓ 0</span>
+                  <span style="color:var(--text4)">|</span>
+                  <span class="quiz-score-wrong" id="quizScoreWrong">✗ 0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Body -->
+            <div class="quiz-body-scroll" id="quizBodyScroll">
+              <!-- Question card injected by JS -->
+            </div>
+
+          </div><!-- /quizActiveView -->
+
+          <!-- Result view -->
+          <div id="quizResultView" style="display:none">
+            <div class="quiz-result-screen">
+              <div class="quiz-result-hero">
+                <div class="quiz-result-emoji" id="qrEmoji">🏆</div>
+                <div class="quiz-result-score-ring">
+                  <svg width="140" height="140" viewBox="0 0 140 140">
+                    <defs>
+                      <linearGradient id="quizResultGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#6c63ff"/>
+                        <stop offset="100%" stop-color="#a855f7"/>
+                      </linearGradient>
+                    </defs>
+                    <circle class="qr-ring-track" cx="70" cy="70" r="58"/>
+                    <circle class="qr-ring-fill" id="qrRingFill" cx="70" cy="70" r="58" stroke-dasharray="364" stroke-dashoffset="364"/>
+                  </svg>
+                  <div class="quiz-result-pct" id="qrPct">0%</div>
+                </div>
+              </div>
+              <div class="quiz-result-title" id="qrTitle">أحسنت!</div>
+              <div class="quiz-result-sub" id="qrSub">استمر في التحسن</div>
+              <div class="quiz-result-stats">
+                <div class="qr-stat">
+                  <div class="qr-stat-val" style="color:var(--success)" id="qrCorrect">0</div>
+                  <div class="qr-stat-lbl">✓ صحيح</div>
+                </div>
+                <div class="qr-stat">
+                  <div class="qr-stat-val" style="color:var(--error)" id="qrWrong">0</div>
+                  <div class="qr-stat-lbl">✗ خطأ</div>
+                </div>
+                <div class="qr-stat">
+                  <div class="qr-stat-val" id="qrTime">0:00</div>
+                  <div class="qr-stat-lbl">⏱ وقت</div>
+                </div>
+              </div>
+              <div class="quiz-result-xp-badge" id="qrXp">+0 XP 🌟</div>
+              <div class="quiz-result-btns">
+                <button class="qr-btn-primary" onclick="loadQuizQuestions()">🔄 اختبار جديد</button>
+                <button class="qr-btn-secondary" onclick="showScreen('homeScreen')">🏠 الرئيسية</button>
+              </div>
+            </div>
+          </div><!-- /quizResultView -->
+
+        </div><!-- /content -->
+      </div><!-- /quizScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           POINTS / DASHBOARD SCREEN
+      ════════════════════════════════════════ -->
+      <div id="pointsScreen" class="screen">
+        <div class="content">
+
+          <!-- Hero -->
+          <div class="points-hero">
+            <div class="points-hero-gradient"></div>
+            <div class="points-hero-noise"></div>
+            <div class="points-hero-orb points-hero-orb-a"></div>
+            <div class="points-hero-orb points-hero-orb-b"></div>
+
+            <div class="points-hero-content">
+              <div class="points-hero-eyebrow">نقاطك الكلية</div>
+              <div class="points-xp-display">
+                <div class="points-xp-num" id="pointsXpNum">0</div>
+                <div class="points-xp-unit">XP</div>
+              </div>
+              <div class="points-hero-sub" id="pointsHeroSub">واصل التعلم لترقية مستواك</div>
+
+              <!-- Level bar -->
+              <div class="points-level-bar-wrap">
+                <div class="points-level-label">
+                  <div class="points-level-name" id="pointsLevelName">🥉 مستوى برونزي</div>
+                  <div class="points-level-next" id="pointsLevelNext">0 للمستوى التالي</div>
+                </div>
+                <div class="points-lvl-track">
+                  <div class="points-lvl-fill" id="pointsLvlFill" style="width:0%"></div>
+                </div>
+              </div>
+
+              <!-- Stats grid -->
+              <div class="points-hero-grid">
+                <div class="points-hero-stat">
+                  <div class="ph-stat-val" id="phStatStreak">0</div>
+                  <div class="ph-stat-lbl">🔥 سلسلة</div>
+                </div>
+                <div class="points-hero-stat">
+                  <div class="ph-stat-val" id="phStatTotal">0</div>
+                  <div class="ph-stat-lbl">📝 أسئلة</div>
+                </div>
+                <div class="points-hero-stat">
+                  <div class="ph-stat-val" id="phStatAcc">0%</div>
+                  <div class="ph-stat-lbl">🎯 دقة</div>
+                </div>
+                <div class="points-hero-stat">
+                  <div class="ph-stat-val" id="phStatSessions">0</div>
+                  <div class="ph-stat-lbl">📅 جلسات</div>
+                </div>
+                <div class="points-hero-stat">
+                  <div class="ph-stat-val" id="phStatBadges">0</div>
+                  <div class="ph-stat-lbl">🏅 شارات</div>
+                </div>
+                <div class="points-hero-stat">
+                  <div class="ph-stat-val" id="phStatRank">#--</div>
+                  <div class="ph-stat-lbl">🏆 ترتيب</div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /hero -->
+
+          <!-- Body -->
+          <div class="points-body">
+
+            <!-- Mini stats grid -->
+            <div class="dash-mini-grid">
+              <div class="dash-mini-stat">
+                <div class="dash-mini-icon" style="background:rgba(16,185,129,0.10)">✅</div>
+                <div class="dash-mini-val" id="dashCorrect">0</div>
+                <div class="dash-mini-lbl">إجابات صحيحة</div>
+              </div>
+              <div class="dash-mini-stat">
+                <div class="dash-mini-icon" style="background:rgba(239,68,68,0.10)">❌</div>
+                <div class="dash-mini-val" id="dashWrong">0</div>
+                <div class="dash-mini-lbl">إجابات خاطئة</div>
+              </div>
+              <div class="dash-mini-stat">
+                <div class="dash-mini-icon" style="background:rgba(108,99,255,0.10)">⏱</div>
+                <div class="dash-mini-val" id="dashPomo">0</div>
+                <div class="dash-mini-lbl">جلسات بومودورو</div>
+              </div>
+              <div class="dash-mini-stat">
+                <div class="dash-mini-icon" style="background:rgba(245,158,11,0.10)">📅</div>
+                <div class="dash-mini-val" id="dashDays">0</div>
+                <div class="dash-mini-lbl">أيام متواصلة</div>
+              </div>
+            </div>
+
+            <!-- Weekly chart -->
+            <div class="dash-section">
+              <div class="dash-section-title">
+                <div class="dash-section-title-dot"></div>
+                نشاط الأسبوع
+              </div>
+              <div class="dash-weekly-bars" id="dashWeeklyBars">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Subject analysis -->
+            <div class="dash-section">
+              <div class="dash-section-title">
+                <div class="dash-section-title-dot"></div>
+                تحليل المواد
+              </div>
+              <div id="dashSubjectRows">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Strengths & Weaknesses -->
+            <div class="dash-section">
+              <div class="dash-section-title">
+                <div class="dash-section-title-dot"></div>
+                نقاط القوة والضعف
+              </div>
+              <div class="dash-sw-section">
+                <div class="dash-sw-label strong">💪 نقاط قوتك</div>
+                <div id="dashStrengths">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+              <div class="dash-sw-section">
+                <div class="dash-sw-label weak">⚠️ تحتاج تحسين</div>
+                <div id="dashWeaknesses">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Daily tasks -->
+            <div class="dash-section">
+              <div class="dash-section-title">
+                <div class="dash-section-title-dot"></div>
+                مهام اليوم
+              </div>
+              <div id="dashDailyTasks">
+                <div class="dash-task-item">
+                  <div class="dash-task-icon" style="background:rgba(108,99,255,0.10)">📝</div>
+                  <div class="dash-task-body">
+                    <div class="dash-task-name">حل 10 أسئلة رياضيات</div>
+                    <div class="dash-task-prog-row">
+                      <div class="dash-task-bar"><div class="dash-task-fill" style="width:40%;background:linear-gradient(90deg,#6c63ff,#a855f7)"></div></div>
+                      <div class="dash-task-cnt">4/10</div>
+                    </div>
+                  </div>
+                  <div class="dash-task-pts">+50 XP</div>
+                </div>
+                <div class="dash-task-item">
+                  <div class="dash-task-icon" style="background:rgba(16,185,129,0.10)">📿</div>
+                  <div class="dash-task-body">
+                    <div class="dash-task-name">أذكار الصباح</div>
+                    <div class="dash-task-prog-row">
+                      <div class="dash-task-bar"><div class="dash-task-fill" style="width:0%;background:linear-gradient(90deg,#10b981,#34d399)"></div></div>
+                      <div class="dash-task-cnt">0/1</div>
+                    </div>
+                  </div>
+                  <div class="dash-task-pts">+20 XP</div>
+                </div>
+                <div class="dash-task-item">
+                  <div class="dash-task-icon" style="background:rgba(239,68,68,0.10)">⏱</div>
+                  <div class="dash-task-body">
+                    <div class="dash-task-name">جلسة بومودورو واحدة</div>
+                    <div class="dash-task-prog-row">
+                      <div class="dash-task-bar"><div class="dash-task-fill" style="width:0%;background:linear-gradient(90deg,#ef4444,#f87171)"></div></div>
+                      <div class="dash-task-cnt">0/1</div>
+                    </div>
+                  </div>
+                  <div class="dash-task-pts">+30 XP</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- AI tip -->
+            <div class="dash-ai-tip">
+              <div class="dash-ai-tip-icon">🤖</div>
+              <div class="dash-ai-tip-text" id="dashAiTip">
+                اضغط على المساعد الذكي للحصول على شرح مخصص لأي درس أو مفهوم تجده صعباً.
+              </div>
+            </div>
+
+          </div><!-- /points-body -->
+        </div><!-- /content -->
+      </div><!-- /pointsScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           PROFILE SCREEN
+      ════════════════════════════════════════ -->
+      <div id="profileScreen" class="screen">
+        <div class="content">
+
+          <!-- Hero -->
+          <div class="profile-hero">
+            <div class="profile-hero-gradient"></div>
+            <div class="profile-hero-noise"></div>
+            <div class="profile-hero-orb-a"></div>
+            <div class="profile-hero-orb-b"></div>
+
+            <div class="profile-hero-content">
+              <!-- Avatar -->
+              <div class="profile-avatar-wrap">
+                <div class="profile-avatar-glow"></div>
+                <div class="profile-avatar-ring"></div>
+                <div class="profile-avatar-main" id="profileAvatarMain">🎓</div>
+                <div class="profile-avatar-edit-btn" onclick="triggerAvatarUpload()">✏️</div>
+              </div>
+              <input type="file" id="avatarInput" accept="image/*" style="display:none" onchange="handleAvatarChange(this)">
+
+              <!-- Level pill -->
+              <div class="profile-level-pill">
+                <span class="profile-level-dot"></span>
+                <span id="profileLevelPill">🥉 مستوى برونزي</span>
+              </div>
+
+              <div class="profile-name" id="profileName">طالب</div>
+              <div class="profile-handle" id="profileHandle">@bac2026</div>
+              <div class="profile-branch-badge" id="profileBranch">🔬 علوم تجريبية</div>
+
+              <!-- Quick stats -->
+              <div class="profile-quick-stats">
+                <div class="profile-qs">
+                  <div class="profile-qs-val" id="profileQsXp">0</div>
+                  <div class="profile-qs-lbl">XP</div>
+                </div>
+                <div class="profile-qs">
+                  <div class="profile-qs-val" id="profileQsStreak">0</div>
+                  <div class="profile-qs-lbl">🔥 سلسلة</div>
+                </div>
+                <div class="profile-qs">
+                  <div class="profile-qs-val" id="profileQsTotal">0</div>
+                  <div class="profile-qs-lbl">📝 أسئلة</div>
+                </div>
+                <div class="profile-qs">
+                  <div class="profile-qs-val" id="profileQsAcc">0%</div>
+                  <div class="profile-qs-lbl">🎯 دقة</div>
+                </div>
+              </div>
+            </div>
+          </div><!-- /hero -->
+
+          <!-- Body -->
+          <div class="profile-body">
+
+            <!-- Badges -->
+            <div class="profile-card">
+              <div class="profile-card-title">
+                <div class="profile-card-title-bar"></div>
+                🏅 شاراتي
+              </div>
+              <div class="profile-badges-grid" id="profileBadgesGrid">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Subject progress -->
+            <div class="profile-card">
+              <div class="profile-card-title">
+                <div class="profile-card-title-bar"></div>
+                📊 تقدمي في المواد
+              </div>
+              <div id="profileSubjectBars">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Branch setting -->
+            <div class="profile-card">
+              <div class="profile-card-title">
+                <div class="profile-card-title-bar"></div>
+                🎓 الشعبة
+              </div>
+              <div class="profile-branch-tabs" id="profileBranchTabs">
+                <div class="profile-branch-tab active" data-branch="science">🔬 علوم</div>
+                <div class="profile-branch-tab" data-branch="math">📐 رياضيات</div>
+                <div class="profile-branch-tab" data-branch="letters">📖 آداب</div>
+                <div class="profile-branch-tab" data-branch="manage">📊 تسيير</div>
+              </div>
+            </div>
+
+            <!-- Theme -->
+            <div class="profile-card">
+              <div class="profile-card-title">
+                <div class="profile-card-title-bar"></div>
+                ⚙️ الإعدادات
+              </div>
+
+              <div class="profile-settings-row" onclick="toggleTheme()">
+                <div class="profile-settings-icon">🌙</div>
+                <div>
+                  <div class="profile-settings-label">الوضع الليلي</div>
+                  <div class="profile-settings-sub">تغيير مظهر التطبيق</div>
+                </div>
+                <div class="profile-settings-right">
+                  <div class="settings-toggle" id="themeToggle" onclick="event.stopPropagation();toggleTheme()"></div>
+                </div>
+              </div>
+
+              <div class="profile-settings-row" onclick="showScreen('pomodoroScreen')">
+                <div class="profile-settings-icon">⏱</div>
+                <div>
+                  <div class="profile-settings-label">مدة البومودورو</div>
+                  <div class="profile-settings-sub" id="profileTimerSub">25 دقيقة</div>
+                </div>
+                <div class="profile-settings-right">
+                  <div class="profile-settings-val" id="profileTimerVal">25 د</div>
+                  <div class="profile-settings-arrow">›</div>
+                </div>
+              </div>
+
+              <div class="profile-settings-row no-action">
+                <div class="profile-settings-icon">📢</div>
+                <div>
+                  <div class="profile-settings-label">الإشعارات</div>
+                  <div class="profile-settings-sub">تذكيرات المذاكرة</div>
+                </div>
+                <div class="profile-settings-right">
+                  <div class="settings-toggle on" id="notifToggle" onclick="toggleNotif()"></div>
+                </div>
+              </div>
+
+              <div class="profile-settings-row" onclick="shareApp()">
+                <div class="profile-settings-icon">🔗</div>
+                <div>
+                  <div class="profile-settings-label">شارك التطبيق</div>
+                  <div class="profile-settings-sub">ادعُ أصدقاءك</div>
+                </div>
+                <div class="profile-settings-right">
+                  <div class="profile-settings-arrow">›</div>
+                </div>
+              </div>
+
+              <div class="profile-settings-row" onclick="openChannel()">
+                <div class="profile-settings-icon">📣</div>
+                <div>
+                  <div class="profile-settings-label">قناة البكالوريا</div>
+                  <div class="profile-settings-sub">@bacDz_09</div>
+                </div>
+                <div class="profile-settings-right">
+                  <div class="profile-settings-arrow">›</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Danger zone -->
+            <div class="profile-card">
+              <div class="profile-card-title">
+                <div class="profile-card-title-bar" style="background:var(--error)"></div>
+                ⚠️ منطقة الخطر
+              </div>
+              <button class="profile-danger-btn" onclick="confirmReset()">
+                🗑 حذف كل البيانات وإعادة البدء
+              </button>
+            </div>
+
+            <div style="height:16px"></div>
+          </div><!-- /profile-body -->
+        </div><!-- /content -->
+      </div><!-- /profileScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           AZKAR SCREEN
+      ════════════════════════════════════════ -->
+      <div id="azkarScreen" class="screen">
+        <div class="content" style="padding:0;display:flex;flex-direction:column">
+
+          <!-- Header -->
+          <div class="azkar-screen-header">
+            <div class="azkar-header-title">
+              <div class="azkar-header-icon">📿</div>
+              الأذكار
+            </div>
+            <div style="font-size:12px;font-weight:800;color:var(--warning);background:rgba(245,158,11,0.10);border:1px solid rgba(245,158,11,0.20);border-radius:999px;padding:5px 12px" id="azkarDoneCount">0/0 مكتمل</div>
+          </div>
+
+          <!-- Categories list -->
+          <div id="azkarCatView" style="flex:1;overflow-y:auto">
+            <div class="azkar-categories">
+
+              <div class="azkar-cat-btn" onclick="openZikr('morning')">
+                <div class="azkar-cat-icon">🌅</div>
+                <div class="azkar-cat-body">
+                  <div class="azkar-cat-name">أذكار الصباح</div>
+                  <div class="azkar-cat-sub">تُقال بعد صلاة الفجر</div>
+                </div>
+                <div class="azkar-cat-count" id="catCountMorning">0/18</div>
+                <div class="azkar-cat-arrow">‹</div>
+              </div>
+
+              <div class="azkar-cat-btn" onclick="openZikr('evening')">
+                <div class="azkar-cat-icon">🌆</div>
+                <div class="azkar-cat-body">
+                  <div class="azkar-cat-name">أذكار المساء</div>
+                  <div class="azkar-cat-sub">تُقال بعد العصر</div>
+                </div>
+                <div class="azkar-cat-count" id="catCountEvening">0/18</div>
+                <div class="azkar-cat-arrow">‹</div>
+              </div>
+
+              <div class="azkar-cat-btn" onclick="openZikr('sleep')">
+                <div class="azkar-cat-icon">🌙</div>
+                <div class="azkar-cat-body">
+                  <div class="azkar-cat-name">أذكار النوم</div>
+                  <div class="azkar-cat-sub">قبل النوم</div>
+                </div>
+                <div class="azkar-cat-count" id="catCountSleep">0/10</div>
+                <div class="azkar-cat-arrow">‹</div>
+              </div>
+
+              <div class="azkar-cat-btn" onclick="openZikr('wakeup')">
+                <div class="azkar-cat-icon">☀️</div>
+                <div class="azkar-cat-body">
+                  <div class="azkar-cat-name">أذكار الاستيقاظ</div>
+                  <div class="azkar-cat-sub">عند الاستيقاظ</div>
+                </div>
+                <div class="azkar-cat-count" id="catCountWakeup">0/5</div>
+                <div class="azkar-cat-arrow">‹</div>
+              </div>
+
+              <div class="azkar-cat-btn" onclick="openZikr('prayer')">
+                <div class="azkar-cat-icon">🕌</div>
+                <div class="azkar-cat-body">
+                  <div class="azkar-cat-name">أذكار بعد الصلاة</div>
+                  <div class="azkar-cat-sub">تسبيح وتحميد</div>
+                </div>
+                <div class="azkar-cat-count" id="catCountPrayer">0/8</div>
+                <div class="azkar-cat-arrow">‹</div>
+              </div>
+
+              <div class="azkar-cat-btn" onclick="openZikr('study')">
+                <div class="azkar-cat-icon">📚</div>
+                <div class="azkar-cat-body">
+                  <div class="azkar-cat-name">أدعية الدراسة</div>
+                  <div class="azkar-cat-sub">قبل وبعد المذاكرة</div>
+                </div>
+                <div class="azkar-cat-count" id="catCountStudy">0/6</div>
+                <div class="azkar-cat-arrow">‹</div>
+              </div>
+
+              <div class="azkar-cat-btn" onclick="openZikr('exam')">
+                <div class="azkar-cat-icon">✍️</div>
+                <div class="azkar-cat-body">
+                  <div class="azkar-cat-name">أدعية الامتحان</div>
+                  <div class="azkar-cat-sub">قبل دخول القاعة</div>
+                </div>
+                <div class="azkar-cat-count" id="catCountExam">0/5</div>
+                <div class="azkar-cat-arrow">‹</div>
+              </div>
+
+              <div class="azkar-cat-btn" onclick="openZikr('general')">
+                <div class="azkar-cat-icon">🤲</div>
+                <div class="azkar-cat-body">
+                  <div class="azkar-cat-name">أذكار عامة</div>
+                  <div class="azkar-cat-sub">استغفار وتسبيح</div>
+                </div>
+                <div class="azkar-cat-count" id="catCountGeneral">0/12</div>
+                <div class="azkar-cat-arrow">‹</div>
+              </div>
+
+            </div>
+          </div><!-- /azkarCatView -->
+
+          <!-- Zikr counter view -->
+          <div id="zikrView" class="zikr-view">
+            <div class="zikr-header">
+              <div class="zikr-back-btn" onclick="closeZikr()">‹</div>
+              <div class="zikr-header-title" id="zikrTitle">أذكار الصباح</div>
+              <div class="zikr-progress-pill" id="zikrProgressPill">1 / 18</div>
+            </div>
+
+            <div class="zikr-body">
+              <div class="zikr-arabic" id="zikrArabic">سبحان الله وبحمده سبحان الله العظيم</div>
+              <div class="zikr-trans" id="zikrTrans">سبحان الله وبحمده، سبحان الله العظيم</div>
+              <div class="zikr-repeat-badge" id="zikrRepeat">يُكرر 100 مرة</div>
+
+              <div class="zikr-counter-area">
+                <button class="zikr-btn" id="zikrBtn" onclick="tapZikr()">
+                  <div class="zikr-count" id="zikrCount">0</div>
+                  <div class="zikr-count-lbl">اضغط للعد</div>
+                </button>
+                <button class="zikr-reset-btn" onclick="resetZikr()">🔄 إعادة</button>
+              </div>
+
+              <div class="zikr-nav-dots" id="zikrNavDots">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div><!-- /zikrView -->
+
+        </div><!-- /content -->
+      </div><!-- /azkarScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           AI ASSISTANT SCREEN
+      ════════════════════════════════════════ -->
+      <div id="aiScreen" class="screen">
+        <div class="content" style="padding:0;display:flex;flex-direction:column">
+
+          <!-- Header -->
+          <div class="ai-screen-header">
+            <div class="ai-header-left">
+              <div class="ai-avatar-icon">
+                🤖
+                <div class="ai-status-dot" id="aiStatusDot"></div>
+              </div>
+              <div>
+                <div class="ai-header-name">مساعد GRIT</div>
+                <div class="ai-header-sub" id="aiStatusText">متاح الآن</div>
+              </div>
+            </div>
+            <div class="ai-header-quota" id="aiQuotaChip">
+              <span class="ai-header-quota-icon">⚡</span>
+              <span id="aiQuotaLeft">10 رسالة</span>
+            </div>
+          </div>
+
+          <!-- Empty / Setup view -->
+          <div class="ai-empty-view" id="aiEmptyView">
+            <div class="ai-empty-icon-wrap">
+              <div class="ai-empty-icon">🤖</div>
+              <div class="ai-empty-icon-ring"></div>
+              <div class="ai-empty-icon-ring-2"></div>
+            </div>
+
+            <div class="ai-empty-title">مساعدك الذكي</div>
+            <div class="ai-empty-sub">
+              اسألني عن أي درس أو مفهوم في المنهج<br>
+              وسأشرح لك بطريقة مبسطة وواضحة
+            </div>
+
+            <!-- Quota -->
+            <div class="ai-quota-card">
+              <div class="ai-quota-row">
+                <div class="ai-quota-lbl">رسائل اليوم</div>
+                <div class="ai-quota-num" id="aiQuotaNum">10</div>
+              </div>
+              <div class="ai-quota-track">
+                <div class="ai-quota-fill" id="aiQuotaFill" style="width:100%"></div>
+              </div>
+              <div class="ai-quota-reset" id="aiQuotaReset">تجدد كل يوم</div>
+            </div>
+
+            <!-- Quick prompts -->
+            <div class="ai-prompts-grid">
+              <div class="ai-prompt-chip" onclick="aiQuickPrompt('اشرح لي قانون نيوتن الثاني')">
+                <div class="ai-prompt-chip-icon">⚡</div>
+                قانون نيوتن
+              </div>
+              <div class="ai-prompt-chip" onclick="aiQuickPrompt('اشرح لي مفهوم التفاضل والتكامل')">
+                <div class="ai-prompt-chip-icon">📐</div>
+                التفاضل
+              </div>
+              <div class="ai-prompt-chip" onclick="aiQuickPrompt('لخص لي درس الثورة الجزائرية')">
+                <div class="ai-prompt-chip-icon">🏛</div>
+                الثورة الجزائرية
+              </div>
+              <div class="ai-prompt-chip" onclick="aiQuickPrompt('ساعدني في تحليل نص أدبي')">
+                <div class="ai-prompt-chip-icon">📖</div>
+                تحليل نص
+              </div>
+              <div class="ai-prompt-chip" onclick="aiQuickPrompt('اشرح لي مفهوم الأسمولية في الكيمياء')">
+                <div class="ai-prompt-chip-icon">🧪</div>
+                كيمياء
+              </div>
+              <div class="ai-prompt-chip" onclick="aiQuickPrompt('ضع لي خطة مذاكرة لأسبوع')">
+                <div class="ai-prompt-chip-icon">📅</div>
+                خطة مذاكرة
+              </div>
+              <div class="ai-prompt-chip" onclick="aiQuickPrompt('ما هي أهم مواضيع بكالوريا الفلسفة')">
+                <div class="ai-prompt-chip-icon">🧠</div>
+                فلسفة
+              </div>
+              <div class="ai-prompt-chip" onclick="aiQuickPrompt('حل لي مسألة رياضيات')">
+                <div class="ai-prompt-chip-icon">🔢</div>
+                مسألة رياضيات
+              </div>
+            </div>
+          </div><!-- /aiEmptyView -->
+
+          <!-- Chat view -->
+          <div class="ai-chat-wrap" id="aiChatView" style="display:none">
+
+            <!-- Quick chips -->
+            <div class="ai-quick-bar" id="aiQuickBar">
+              <div class="ai-qchip" onclick="aiQuickPrompt('اشرح بتفصيل أكثر')">شرح أكثر</div>
+              <div class="ai-qchip" onclick="aiQuickPrompt('أعطني مثالاً')">مثال</div>
+              <div class="ai-qchip" onclick="aiQuickPrompt('لخص بنقاط')">ملخص</div>
+              <div class="ai-qchip" onclick="aiQuickPrompt('ما هي أهم النقاط؟')">أهم النقاط</div>
+              <div class="ai-qchip" onclick="aiQuickPrompt('أعطني سؤالاً للتمرين')">سؤال تمرين</div>
+              <div class="ai-qchip" onclick="aiQuickPrompt('كيف أتذكر هذا؟')">نصيحة حفظ</div>
+              <div class="ai-qchip" onclick="clearAiChat()">🗑 مسح</div>
+            </div>
+
+            <!-- Messages -->
+            <div class="ai-msgs" id="aiMsgs">
+              <!-- Messages injected by JS -->
+            </div>
+
+          </div><!-- /aiChatView -->
+
+          <!-- Input bar -->
+          <div class="ai-input-row">
+            <input
+              type="text"
+              id="aiTextInput"
+              class="ai-text-input"
+              placeholder="اسألني أي شيء عن المنهج..."
+              onkeydown="if(event.key==='Enter')sendAiMsg()"
+              maxlength="500"
+            >
+            <button class="ai-send-btn" id="aiSendBtn" onclick="sendAiMsg()">➤</button>
+          </div>
+
+        </div><!-- /content -->
+      </div><!-- /aiScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           LEADERBOARD SCREEN
+      ════════════════════════════════════════ -->
+      <div id="leaderScreen" class="screen">
+        <div class="content" style="padding:0">
+
+          <!-- Hero -->
+          <div class="lb-hero">
+            <div class="lb-hero-gradient"></div>
+            <div class="lb-hero-noise"></div>
+            <div class="lb-hero-content">
+              <div class="lb-hero-title">🏆 لوحة المتصدرين</div>
+              <div class="lb-hero-sub">نافس زملاءك وتصدر القائمة</div>
+
+              <!-- My rank banner -->
+              <div class="lb-my-rank">
+                <div>
+                  <div class="lb-my-rank-label">ترتيبك الحالي</div>
+                  <div class="lb-my-rank-val" id="lbMyRankVal">#--</div>
+                </div>
+                <div style="flex:1;padding-right:12px">
+                  <div class="lb-my-rank-name" id="lbMyName">أنت</div>
+                  <div class="lb-my-rank-xp" id="lbMyXp">0 XP</div>
+                </div>
+                <div class="lb-my-rank-badge" id="lbMyBadge">
+                  <span class="level-badge bronze">🥉</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Period tabs -->
+          <div class="lb-period-tabs">
+            <div class="lb-period-tab active" data-period="weekly" onclick="switchLbPeriod(this,'weekly')">هذا الأسبوع</div>
+            <div class="lb-period-tab" data-period="monthly" onclick="switchLbPeriod(this,'monthly')">هذا الشهر</div>
+            <div class="lb-period-tab" data-period="alltime" onclick="switchLbPeriod(this,'alltime')">كل الوقت</div>
+            <div class="lb-period-tab" data-period="branch" onclick="switchLbPeriod(this,'branch')">شعبتي</div>
+          </div>
+
+          <!-- Podium top 3 -->
+          <div class="lb-podium" id="lbPodium">
+            <!-- Injected by JS -->
+          </div>
+
+          <!-- List -->
+          <div class="lb-list" id="lbList">
+            <!-- Injected by JS -->
+          </div>
+
+          <!-- Coming soon notice -->
+          <div style="text-align:center;padding:20px 20px 100px;color:var(--text4);font-size:12px;font-weight:700">
+            🔒 اللوحة الحية تتطلب اتصالاً بالإنترنت · قريباً
+          </div>
+
+        </div>
+      </div><!-- /leaderScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           POMODORO SCREEN
+      ════════════════════════════════════════ -->
+      <div id="pomodoroScreen" class="screen">
+        <div class="content" style="padding:0;display:flex;flex-direction:column;align-items:center">
+
+          <!-- Header -->
+          <div class="pomo-header" style="width:100%">
+            <div class="pomo-header-title">⏱ مؤقت بومودورو</div>
+            <div class="pomo-header-sessions">
+              🍅 <span id="pomoSessionCount">0</span> جلسة اليوم
+            </div>
+          </div>
+
+          <!-- Mode tabs -->
+          <div class="pomo-mode-tabs">
+            <div class="pomo-mode-tab active" data-mode="focus" onclick="Pomodoro.setMode('work')">تركيز</div>
+            <div class="pomo-mode-tab" data-mode="short" onclick="Pomodoro.setMode('short_break')">استراحة قصيرة</div>
+            <div class="pomo-mode-tab" data-mode="long" onclick="Pomodoro.setMode('long_break')">استراحة طويلة</div>
+          </div>
+
+          <!-- Ring -->
+          <div class="pomo-ring-area" style="width:100%">
+            <div class="pomo-ring-wrap">
+              <svg class="pomo-ring-svg" width="230" height="230" viewBox="0 0 230 230">
+                <defs>
+                  <linearGradient id="pomoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6c63ff"/>
+                    <stop offset="100%" stop-color="#a855f7"/>
+                  </linearGradient>
+                </defs>
+                <circle class="pomo-ring-bg" cx="115" cy="115" r="100"/>
+                <circle class="pomo-ring-fill" id="pomoRingFill" cx="115" cy="115" r="100"
+                  stroke-dasharray="628" stroke-dashoffset="0"/>
+              </svg>
+              <div class="pomo-time-display">
+                <div class="pomo-time" id="pomoTime">25:00</div>
+                <div class="pomo-mode-label" id="pomoModeLabel">وقت التركيز</div>
+              </div>
+            </div>
+
+            <!-- Session dots -->
+            <div class="pomo-sessions-row" id="pomoSessionDots">
+              <div class="pomo-session-dot current"></div>
+              <div class="pomo-session-dot"></div>
+              <div class="pomo-session-dot"></div>
+              <div class="pomo-session-dot"></div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="pomo-controls">
+            <div class="pomo-ctrl-secondary" onclick="Pomodoro.reset()" title="إعادة">🔄</div>
+            <button class="pomo-ctrl-main" id="pomoPlayBtn" onclick="Pomodoro.toggle()">▶️</button>
+            <div class="pomo-ctrl-secondary" onclick="Pomodoro.skip()" title="تخطي">⏭</div>
+          </div>
+
+          <!-- Task chip -->
+          <div class="pomo-task-chip" onclick="selectPomoTask()">
+            <div class="pomo-task-chip-dot"></div>
+            <span id="pomoTaskLabel">اختر مادة للتركيز عليها</span>
+          </div>
+
+          <!-- Stats -->
+          <div class="pomo-stats-row">
+            <div class="pomo-stat-card">
+              <div class="pomo-stat-val" id="pomoStatFocus">0</div>
+              <div class="pomo-stat-lbl">جلسات تركيز</div>
+            </div>
+            <div class="pomo-stat-card">
+              <div class="pomo-stat-val" id="pomoStatMins">0</div>
+              <div class="pomo-stat-lbl">دقيقة مذاكرة</div>
+            </div>
+            <div class="pomo-stat-card">
+              <div class="pomo-stat-val" id="pomoStatXp">0</div>
+              <div class="pomo-stat-lbl">XP مكتسب</div>
+            </div>
+          </div>
+
+          <!-- Tips -->
+          <div style="padding:0 16px 16px;width:100%">
+            <div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start">
+              <span style="font-size:20px;flex-shrink:0">💡</span>
+              <div style="font-size:12px;font-weight:600;color:var(--text2);line-height:1.65;direction:rtl" id="pomoTip">
+                تقنية بومودورو: اعمل 25 دقيقة بتركيز كامل، ثم خذ استراحة 5 دقائق. بعد 4 جلسات خذ استراحة طويلة 15 دقيقة.
+              </div>
+            </div>
+          </div>
+
+          <div style="height:calc(80px + env(safe-area-inset-bottom))"></div>
+        </div>
+      </div><!-- /pomodoroScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           EXAM SCREEN
+      ════════════════════════════════════════ -->
+      <div id="examScreen" class="screen">
+        <div class="content" style="padding:0;display:flex;flex-direction:column">
+
+          <!-- Setup view -->
+          <div id="examSetupView">
+            <div style="padding:14px 16px;padding-top:calc(14px + env(safe-area-inset-top));background:var(--surface-glass);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0">
+              <div style="font-size:17px;font-weight:900;color:var(--text)">📋 وضع الامتحان</div>
+              <div style="font-size:12px;font-weight:800;color:var(--success);background:var(--success-bg);border:1px solid var(--success-border);border-radius:999px;padding:5px 12px">محاكاة حقيقية</div>
+            </div>
+
+            <div class="exam-setup-wrap">
+
+              <!-- Hero card -->
+              <div class="exam-hero-card">
+                <div class="exam-hero-icon">📋</div>
+                <div class="exam-hero-title">امتحان البكالوريا</div>
+                <div class="exam-hero-sub">محاكاة حقيقية بتوقيت رسمي</div>
+                <div class="exam-badge-row">
+                  <div class="exam-badge">⏱ موقوت</div>
+                  <div class="exam-badge">📊 تقرير كامل</div>
+                  <div class="exam-badge">🎯 تقييم فوري</div>
+                </div>
+              </div>
+
+              <!-- Subject -->
+              <div class="exam-config-card">
+                <div class="exam-config-title">المادة</div>
+                <div id="examSubjectTabs" style="display:flex;gap:8px;flex-wrap:wrap">
+                  <button class="diff-btn active" data-subj="math" style="flex:1;min-width:80px">
+                    <div class="diff-icon">📐</div>
+                    <div class="diff-name">رياضيات</div>
+                  </button>
+                  <button class="diff-btn" data-subj="physics" style="flex:1;min-width:80px">
+                    <div class="diff-icon">⚡</div>
+                    <div class="diff-name">فيزياء</div>
+                  </button>
+                  <button class="diff-btn" data-subj="arabic" style="flex:1;min-width:80px">
+                    <div class="diff-icon">📖</div>
+                    <div class="diff-name">عربية</div>
+                  </button>
+                  <button class="diff-btn" data-subj="history" style="flex:1;min-width:80px">
+                    <div class="diff-icon">🏛</div>
+                    <div class="diff-name">تاريخ</div>
+                  </button>
+                  <button class="diff-btn" data-subj="philosophy" style="flex:1;min-width:80px">
+                    <div class="diff-icon">🧠</div>
+                    <div class="diff-name">فلسفة</div>
+                  </button>
+                  <button class="diff-btn" data-subj="science" style="flex:1;min-width:80px">
+                    <div class="diff-icon">🧬</div>
+                    <div class="diff-name">علوم</div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Duration -->
+              <div class="exam-config-card">
+                <div class="exam-config-title">مدة الامتحان</div>
+                <div class="exam-year-grid">
+                  <div class="exam-year-btn active" data-dur="30">30 د</div>
+                  <div class="exam-year-btn" data-dur="60">ساعة</div>
+                  <div class="exam-year-btn" data-dur="90">1.5 س</div>
+                  <div class="exam-year-btn" data-dur="120">2 ساعة</div>
+                  <div class="exam-year-btn" data-dur="180">3 ساعات</div>
+                  <div class="exam-year-btn" data-dur="0">بدون</div>
+                </div>
+              </div>
+
+              <!-- Questions count -->
+              <div class="exam-config-card">
+                <div class="exam-config-title">عدد الأسئلة</div>
+                <div class="exam-year-grid">
+                  <div class="exam-year-btn active" data-qcount="10">10</div>
+                  <div class="exam-year-btn" data-qcount="20">20</div>
+                  <div class="exam-year-btn" data-qcount="30">30</div>
+                  <div class="exam-year-btn" data-qcount="40">40</div>
+                  <div class="exam-year-btn" data-qcount="50">50</div>
+                  <div class="exam-year-btn" data-qcount="0">كل الأسئلة</div>
+                </div>
+              </div>
+
+              <button class="exam-start-btn" onclick="startExam()">
+                📋 ابدأ الامتحان
+              </button>
+
+            </div>
+          </div><!-- /examSetupView -->
+
+          <!-- Active exam view -->
+          <div id="examActiveView" style="display:none;flex-direction:column;flex:1">
+
+            <!-- Header -->
+            <div class="exam-active-header">
+              <div class="exam-header-top">
+                <div class="exam-timer-badge" id="examTimerBadge">⏱ 00:00</div>
+                <div class="exam-prog-track">
+                  <div class="exam-prog-fill" id="examProgFill" style="width:0%"></div>
+                </div>
+                <div class="exam-q-pill" id="examQPill">1/10</div>
+              </div>
+              <div class="exam-header-meta">
+                <div class="exam-subject-tag" id="examSubjectTag">رياضيات</div>
+                <div class="exam-answered-count" id="examAnsweredCount">0 أجبت</div>
+                <button style="padding:5px 12px;background:var(--error-bg);border:1px solid var(--error-border);border-radius:999px;font-family:'Cairo',sans-serif;font-size:11px;font-weight:900;color:var(--error);cursor:pointer" onclick="confirmSubmitExam()">تسليم</button>
+              </div>
+            </div>
+
+            <!-- Question strip -->
+            <div class="exam-q-strip" id="examQStrip">
+              <!-- Injected by JS -->
+            </div>
+
+            <!-- Body -->
+            <div class="exam-body-scroll" id="examBodyScroll">
+              <!-- Injected by JS -->
+            </div>
+
+            <!-- Nav row -->
+            <div style="padding:12px 16px;padding-bottom:calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--border);background:var(--surface-glass);backdrop-filter:blur(12px);display:flex;gap:10px;flex-shrink:0">
+              <button class="exam-nav-btn" id="examPrevBtn" onclick="examNav(-1)">‹ السابق</button>
+              <button class="exam-nav-btn" id="examNextBtn" onclick="examNav(1)">التالي ›</button>
+            </div>
+
+          </div><!-- /examActiveView -->
+
+          <!-- Exam result -->
+          <div id="examResultView" style="display:none;overflow-y:auto">
+            <div class="exam-result-wrap">
+              <div class="exam-result-emoji" id="examResultEmoji">🎓</div>
+              <div class="exam-result-grade" id="examResultGrade">0/20</div>
+              <div class="exam-result-title" id="examResultTitle">نتيجة الامتحان</div>
+              <div class="exam-result-stats">
+                <div class="exam-result-stat">
+                  <div class="exam-result-stat-val" style="color:var(--success)" id="examResCorrect">0</div>
+                  <div class="exam-result-stat-lbl">✓ صحيح</div>
+                </div>
+                <div class="exam-result-stat">
+                  <div class="exam-result-stat-val" style="color:var(--error)" id="examResWrong">0</div>
+                  <div class="exam-result-stat-lbl">✗ خطأ</div>
+                </div>
+                <div class="exam-result-stat">
+                  <div class="exam-result-stat-val" id="examResTime">0:00</div>
+                  <div class="exam-result-stat-lbl">⏱ وقت</div>
+                </div>
+                <div class="exam-result-stat">
+                  <div class="exam-result-stat-val" id="examResXp">+0</div>
+                  <div class="exam-result-stat-lbl">⭐ XP</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:10px;width:100%;margin-top:8px">
+                <button class="exam-start-btn" onclick="startExam()">🔄 امتحان جديد</button>
+                <button style="width:100%;padding:13px;background:var(--surface2);border:1.5px solid var(--border2);border-radius:14px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:900;color:var(--text);cursor:pointer" onclick="showExamSetup()">⚙️ تغيير الإعدادات</button>
+                <button style="width:100%;padding:13px;background:var(--surface2);border:1.5px solid var(--border2);border-radius:14px;font-family:'Cairo',sans-serif;font-size:14px;font-weight:900;color:var(--text);cursor:pointer" onclick="showScreen('homeScreen')">🏠 الرئيسية</button>
+              </div>
+            </div>
+          </div><!-- /examResultView -->
+
+        </div>
+      </div><!-- /examScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           TDL SCREEN
+      ════════════════════════════════════════ -->
+      <div id="tdlScreen" class="screen">
+        <div class="content" style="padding:0;display:flex;flex-direction:column">
+
+          <!-- Header -->
+          <div class="tdl-header">
+            <div class="tdl-header-title">✅ مهامي</div>
+            <div class="tdl-done-count" id="tdlDoneCount">0/0 مكتمل</div>
+          </div>
+
+          <!-- Add bar -->
+          <div class="tdl-add-bar">
+            <input
+              type="text"
+              id="tdlInput"
+              class="tdl-add-input"
+              placeholder="أضف مهمة جديدة..."
+              maxlength="80"
+              onkeydown="if(event.key==='Enter')showAddTaskModal()"
+            >
+            <div class="tdl-add-btn" onclick="showAddTaskModal()">+</div>
+          </div>
+
+          <!-- Category tabs -->
+          <div class="tdl-cat-row">
+            <div class="tdl-cat-tab active" data-cat="all" onclick="setTdlFilter('all',this)">الكل</div>
+            <div class="tdl-cat-tab" data-cat="pending" onclick="setTdlFilter('pending',this)">⏳ معلقة</div>
+            <div class="tdl-cat-tab" data-cat="done" onclick="setTdlFilter('done',this)">✅ مكتملة</div>
+            <div class="tdl-cat-tab" data-cat="math" onclick="setTdlFilter('math',this)">📐 رياضيات</div>
+            <div class="tdl-cat-tab" data-cat="physics" onclick="setTdlFilter('physics',this)">⚡ فيزياء</div>
+            <div class="tdl-cat-tab" data-cat="arabic" onclick="setTdlFilter('arabic',this)">📖 عربية</div>
+            <div class="tdl-cat-tab" data-cat="other" onclick="setTdlFilter('other',this)">📌 أخرى</div>
+          </div>
+
+          <!-- Progress bar -->
+          <div class="tdl-progress-row">
+            <div class="tdl-prog-track">
+              <div class="tdl-prog-fill" id="tdlProgFill" style="width:0%"></div>
+            </div>
+            <div class="tdl-prog-label" id="tdlProgLabel">0%</div>
+          </div>
+
+          <!-- Task list -->
+          <div class="tdl-list" id="tdlList" style="flex:1;overflow-y:auto">
+            <!-- Injected by JS -->
+            <div class="tdl-empty" id="tdlEmpty">
+              <div class="tdl-empty-icon">📋</div>
+              <div class="tdl-empty-title">لا توجد مهام بعد</div>
+              <div class="tdl-empty-sub">أضف مهمتك الأولى من الحقل أعلاه</div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /tdlScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           SUMMARIES SCREEN
+      ════════════════════════════════════════ -->
+      <div id="summariesScreen" class="screen">
+        <div class="content" style="padding:0;display:flex;flex-direction:column">
+
+          <!-- Header -->
+          <div class="summaries-header">
+            <div class="summaries-header-title">📚 الملخصات والدروس</div>
+            <div style="font-size:12px;font-weight:800;color:var(--accent);background:var(--overlay-medium);border:1px solid rgba(108,99,255,0.18);border-radius:999px;padding:5px 12px" id="summCountChip">0 درس</div>
+          </div>
+
+          <!-- Search -->
+          <div class="summaries-search">
+            <input
+              type="text"
+              id="summSearchInput"
+              class="summaries-search-input"
+              placeholder="🔍 ابحث عن درس أو مفهوم..."
+              oninput="filterSummaries(this.value)"
+            >
+          </div>
+
+          <!-- Filter tabs -->
+          <div class="summaries-filter-row">
+            <div class="summ-filter-tab active" data-subj="all" onclick="filterSummSubj(this,'all')">الكل</div>
+            <div class="summ-filter-tab" data-subj="math" onclick="filterSummSubj(this,'math')">📐 رياضيات</div>
+            <div class="summ-filter-tab" data-subj="physics" onclick="filterSummSubj(this,'physics')">⚡ فيزياء</div>
+            <div class="summ-filter-tab" data-subj="arabic" onclick="filterSummSubj(this,'arabic')">📖 عربية</div>
+            <div class="summ-filter-tab" data-subj="history" onclick="filterSummSubj(this,'history')">🏛 تاريخ</div>
+            <div class="summ-filter-tab" data-subj="philosophy" onclick="filterSummSubj(this,'philosophy')">🧠 فلسفة</div>
+            <div class="summ-filter-tab" data-subj="science" onclick="filterSummSubj(this,'science')">🧬 علوم</div>
+            <div class="summ-filter-tab" data-subj="chemistry" onclick="filterSummSubj(this,'chemistry')">🧪 كيمياء</div>
+            <div class="summ-filter-tab" data-subj="economics" onclick="filterSummSubj(this,'economics')">📊 اقتصاد</div>
+          </div>
+
+          <!-- Cards list -->
+          <div id="summListView" style="flex:1;overflow-y:auto">
+            <div class="summaries-grid" id="summGrid">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+
+          <!-- Reader view -->
+          <div class="summary-reader" id="summReaderView">
+            <div class="summary-reader-header">
+              <div class="summary-reader-back" onclick="closeSummReader()">‹</div>
+              <div class="summary-reader-title" id="summReaderTitle">الملخص</div>
+              <div class="summary-reader-actions">
+                <div class="summary-reader-action" onclick="aiExplainSumm()" title="شرح بالذكاء الاصطناعي">🤖</div>
+                <div class="summary-reader-action" onclick="shareSumm()" title="مشاركة">📤</div>
+              </div>
+            </div>
+            <div class="summary-reader-content">
+              <div class="summary-content-title" id="summReaderBigTitle"></div>
+              <div class="summary-content-meta" id="summReaderMeta"></div>
+              <div class="summary-content-body" id="summReaderBody"></div>
+            </div>
+          </div>
+
+        </div>
+      </div><!-- /summariesScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           SETTINGS SCREEN (standalone)
+      ════════════════════════════════════════ -->
+      <div id="settingsScreen" class="screen">
+        <div class="content" style="padding:0">
+
+          <div class="settings-header">
+            <div class="settings-header-title">⚙️ الإعدادات</div>
+          </div>
+
+          <div class="settings-body">
+
+            <div class="settings-section">
+              <div class="settings-section-label">المظهر</div>
+              <div class="settings-group">
+                <div class="settings-row" onclick="toggleTheme()">
+                  <div class="settings-row-icon">🌙</div>
+                  <div class="settings-row-body">
+                    <div class="settings-row-title">الوضع الليلي</div>
+                    <div class="settings-row-sub">تغيير مظهر التطبيق</div>
+                  </div>
+                  <div class="settings-row-right">
+                    <div class="settings-toggle" id="settingsThemeToggle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <div class="settings-section-label">الشعبة والدراسة</div>
+              <div class="settings-group">
+                <div class="settings-row" onclick="showScreen('profileScreen')">
+                  <div class="settings-row-icon">🎓</div>
+                  <div class="settings-row-body">
+                    <div class="settings-row-title">الشعبة الدراسية</div>
+                    <div class="settings-row-sub" id="settingsBranchSub">علوم تجريبية</div>
+                  </div>
+                  <div class="settings-row-right">
+                    <div class="settings-row-arrow">›</div>
+                  </div>
+                </div>
+                <div class="settings-row">
+                  <div class="settings-row-icon">⏱</div>
+                  <div class="settings-row-body">
+                    <div class="settings-row-title">مدة البومودورو</div>
+                    <div class="settings-row-sub">مدة جلسة التركيز</div>
+                  </div>
+                  <div class="settings-row-right">
+                    <div class="settings-row-val" id="settingsTimerVal">25 د</div>
+                    <div class="settings-row-arrow">›</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <div class="settings-section-label">الإشعارات</div>
+              <div class="settings-group">
+                <div class="settings-row no-action">
+                  <div class="settings-row-icon">🔔</div>
+                  <div class="settings-row-body">
+                    <div class="settings-row-title">إشعارات المذاكرة</div>
+                    <div class="settings-row-sub">تذكير يومي</div>
+                  </div>
+                  <div class="settings-row-right">
+                    <div class="settings-toggle on" id="settingsNotifToggle" onclick="toggleNotif()"></div>
+                  </div>
+                </div>
+                <div class="settings-row no-action">
+                  <div class="settings-row-icon">🔥</div>
+                  <div class="settings-row-body">
+                    <div class="settings-row-title">تذكير السلسلة</div>
+                    <div class="settings-row-sub">حافظ على سلسلتك</div>
+                  </div>
+                  <div class="settings-row-right">
+                    <div class="settings-toggle on"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <div class="settings-section-label">عن التطبيق</div>
+              <div class="settings-group">
+                <div class="settings-row" onclick="openChannel()">
+                  <div class="settings-row-icon">📣</div>
+                  <div class="settings-row-body">
+                    <div class="settings-row-title">قناة البكالوريا</div>
+                    <div class="settings-row-sub">@bacDz_09</div>
+                  </div>
+                  <div class="settings-row-right">
+                    <div class="settings-row-arrow">›</div>
+                  </div>
+                </div>
+                <div class="settings-row" onclick="shareApp()">
+                  <div class="settings-row-icon">🔗</div>
+                  <div class="settings-row-body">
+                    <div class="settings-row-title">شارك التطبيق</div>
+                    <div class="settings-row-sub">ادعُ أصدقاءك</div>
+                  </div>
+                  <div class="settings-row-right">
+                    <div class="settings-row-arrow">›</div>
+                  </div>
+                </div>
+                <div class="settings-row no-action">
+                  <div class="settings-row-icon">ℹ️</div>
+                  <div class="settings-row-body">
+                    <div class="settings-row-title">الإصدار</div>
+                    <div class="settings-row-sub">GRIT Learn v7.0</div>
+                  </div>
+                  <div class="settings-row-right">
+                    <div class="settings-row-val">v7.0</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <div class="settings-section-label">الخطر</div>
+              <div class="settings-group">
+                <div class="settings-row" onclick="confirmReset()">
+                  <div class="settings-row-icon" style="background:var(--error-bg)">🗑</div>
+                  <div class="settings-row-body">
+                    <div class="settings-row-title" style="color:var(--error)">حذف كل البيانات</div>
+                    <div class="settings-row-sub">لا يمكن التراجع</div>
+                  </div>
+                  <div class="settings-row-right">
+                    <div class="settings-row-arrow" style="color:var(--error)">›</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-version">
+              <div class="settings-version-logo">🎓</div>
+              <div class="settings-version-name">GRIT Learn</div>
+              <div>بكالوريا الجزائر 2026</div>
+              <div>@bacDz_09 · @ZarVenox</div>
+            </div>
+
+          </div>
+        </div>
+      </div><!-- /settingsScreen -->
+
+
+      <!-- ════════════════════════════════════════
+           STUDY PLAN SCREEN — خطة الدراسة
+      ════════════════════════════════════════ -->
+      <div id="studyPlanScreen" class="screen">
+        <div class="content" style="padding:0">
+
+          <!-- Header -->
+          <div class="screen-header" style="background:var(--surface-glass);backdrop-filter:blur(16px)">
+            <div class="screen-header-title">📅 خطة الدراسة</div>
+            <div class="screen-header-action" onclick="refreshStudyPlan()" title="تحديث">🔄</div>
+          </div>
+
+          <div style="padding:16px;display:flex;flex-direction:column;gap:16px">
+
+            <!-- BAC countdown hero -->
+            <div class="sp-bac-hero" id="spBacHero">
+              <div class="sp-bac-orb-a"></div>
+              <div class="sp-bac-orb-b"></div>
+              <div class="sp-bac-content">
+                <div class="sp-bac-days-num" id="spBacDays">---</div>
+                <div class="sp-bac-days-label" id="spBacSubLabel">يوم متبقي</div>
+                <div class="sp-bac-date">🗓 7 جوان 2026</div>
+                <div class="sp-bac-bar-track">
+                  <div class="sp-bac-bar-fill" id="spBacFill" style="width:0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Summary stats -->
+            <div class="sp-stats-row" id="spSummaryStats">
+              <!-- Injected by JS -->
+            </div>
+
+            <!-- Smart suggestion -->
+            <div id="spSmartSuggestion">
+              <!-- Injected by JS -->
+            </div>
+
+            <!-- Weekly schedule -->
+            <div class="sp-section">
+              <div class="sp-section-title">
+                <div class="sp-section-dot" style="background:var(--accent)"></div>
+                سجل هذا الأسبوع
+              </div>
+              <div class="sp-week-grid" id="spWeekGrid">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Goal progress -->
+            <div class="sp-section">
+              <div class="sp-section-title">
+                <div class="sp-section-dot" style="background:var(--success)"></div>
+                أهداف اليوم
+              </div>
+              <div class="sp-goals-card" id="spGoalProgress">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Today priorities -->
+            <div class="sp-section">
+              <div class="sp-section-title">
+                <div class="sp-section-dot" style="background:var(--error)"></div>
+                أولويات اليوم — الأضعف أولاً
+              </div>
+              <div id="spTodayFocus" style="display:flex;flex-direction:column;gap:8px">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Subject status -->
+            <div class="sp-section">
+              <div class="sp-section-title">
+                <div class="sp-section-dot" style="background:var(--brand-primary)"></div>
+                حالة جميع المواد
+              </div>
+              <div id="spSubjectStatus" style="display:flex;flex-direction:column;gap:7px">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Study tips -->
+            <div class="sp-section">
+              <div class="sp-section-title">
+                <div class="sp-section-dot" style="background:var(--brand-rose)"></div>
+                نصيحة اليوم
+              </div>
+              <div class="sp-tips-list" id="spTipsList">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+
+            <!-- Quick actions -->
+            <div class="sp-section">
+              <div class="sp-section-title">
+                <div class="sp-section-dot" style="background:var(--brand-secondary)"></div>
+                انتقل إلى
+              </div>
+              <div class="sp-quick-actions">
+                <button class="sp-qa-btn" onclick="showScreen('quizScreen')">📝 كويز</button>
+                <button class="sp-qa-btn" onclick="showScreen('pomodoroScreen')">⏱ بومودورو</button>
+                <button class="sp-qa-btn" onclick="showScreen('aiScreen')">🤖 مساعد AI</button>
+                <button class="sp-qa-btn" onclick="showScreen('summariesScreen')">📚 ملخصات</button>
+              </div>
+            </div>
+
+            <div style="height:16px"></div>
+          </div>
+        </div>
+      </div><!-- /studyPlanScreen -->
+
+    </div><!-- /screensContainer -->
+
+
+    <!-- ══════════════════════════════════════════════
+         BOTTOM NAVIGATION
+    ══════════════════════════════════════════════ -->
+    <nav id="bottomNav">
+      <div id="navIndicator"></div>
+
+      <div class="nav-item active" data-screen="homeScreen" onclick="showScreen('homeScreen')">
+        <div class="nav-icon">🏠</div>
+        <div class="nav-label">الرئيسية</div>
+      </div>
+
+      <div class="nav-item" data-screen="summariesScreen" onclick="showScreen('summariesScreen')">
+        <div class="nav-icon">📚</div>
+        <div class="nav-label">دروس</div>
+      </div>
+
+      <!-- Center quiz button -->
+      <div class="nav-center-btn" onclick="showScreen('quizScreen')">
+        <div class="nav-center-inner">📝</div>
+      </div>
+
+      <div class="nav-item" data-screen="pointsScreen" onclick="showScreen('pointsScreen')">
+        <div class="nav-icon">📊</div>
+        <div class="nav-label">نقاط</div>
+      </div>
+
+      <div class="nav-item" data-screen="profileScreen" onclick="showScreen('profileScreen')">
+        <div class="nav-icon" id="navProfileIcon">👤</div>
+        <div class="nav-label">أنا</div>
+      </div>
+
+    </nav>
+
+  </div><!-- /mainApp -->
+
+
+  <!-- ══════════════════════════════════════════════
+       GLOBAL OVERLAY
+  ══════════════════════════════════════════════ -->
+  <div id="overlay" onclick="closeOverlay()"></div>
+
+
+  <!-- ══════════════════════════════════════════════
+       XP POPUP
+  ══════════════════════════════════════════════ -->
+  <div id="xpPopup">
+    <span>⭐</span>
+    <span id="xpPopupText">+50 XP</span>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       LEVEL UP POPUP
+  ══════════════════════════════════════════════ -->
+  <div id="levelUpPopup">
+    <div class="levelup-card">
+      <div class="levelup-ring-wrap">
+        <div class="levelup-ring"></div>
+        <div class="levelup-ring levelup-ring-2"></div>
+        <div class="levelup-ring levelup-ring-3"></div>
+        <div class="levelup-icon" id="luIcon">🥈</div>
+      </div>
+      <div class="levelup-congrats">تهانينا! 🎉</div>
+      <div class="levelup-title" id="luTitle">مستوى جديد!</div>
+      <div class="levelup-sub" id="luSub">لقد وصلت إلى مستوى جديد</div>
+      <button class="levelup-btn" onclick="closeLevelUp()">🚀 واصل التقدم</button>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       BADGE POPUP
+  ══════════════════════════════════════════════ -->
+  <div id="badgePopup">
+    <div class="badge-popup-card">
+      <div class="badge-popup-icon" id="bpIcon">🏅</div>
+      <div class="badge-popup-new">شارة جديدة! 🎉</div>
+      <div class="badge-popup-name" id="bpName">شارة</div>
+      <div class="badge-popup-desc" id="bpDesc">حصلت على شارة جديدة</div>
+      <button class="badge-popup-btn" onclick="closeBadgePopup()">رائع! 🎊</button>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       CONFIRM MODAL
+  ══════════════════════════════════════════════ -->
+  <div id="confirmModal">
+    <div class="confirm-sheet">
+      <div class="confirm-handle"></div>
+      <div class="confirm-icon" id="confirmIcon">⚠️</div>
+      <div class="confirm-title" id="confirmTitle">هل أنت متأكد؟</div>
+      <div class="confirm-sub" id="confirmSub">لا يمكن التراجع عن هذا الإجراء</div>
+      <div class="confirm-btns">
+        <button class="confirm-ok-btn" id="confirmOkBtn" onclick="confirmAction()">نعم، متأكد</button>
+        <button class="confirm-cancel-btn" onclick="closeConfirm()">إلغاء</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       TOAST CONTAINER
+  ══════════════════════════════════════════════ -->
+  <div class="toast-container" id="toastContainer"></div>
+
+
+  <!-- ══════════════════════════════════════════════
+       POMODORO TASK BOTTOM SHEET
+  ══════════════════════════════════════════════ -->
+  <div class="bottom-sheet" id="pomoTaskSheet">
+    <div class="bs-handle"></div>
+    <div class="bs-title">اختر مادة التركيز</div>
+    <div style="display:flex;flex-direction:column;gap:8px" id="pomoTaskList">
+      <!-- Injected by JS -->
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       SCRIPTS
+  ══════════════════════════════════════════════ -->
+  <script src="state.js"></script>
+  <script src="data.js"></script>
+  <script src="ui.js"></script>
+  <script src="app.js"></script>
+  <script src="quiz.js"></script>
+  <script src="exam.js"></script>
+  <script src="stats.js"></script>
+  <script src="pomodoro.js"></script>
+  <script src="tdl.js"></script>
+  <script src="azkar.js"></script>
+  <script src="avatar.js"></script>
+  <script src="lessons.js"></script>
+  <script src="leaderboard.js"></script>
+  <script src="summaries_module.js"></script>
+  <script src="ai.js"></script>
+  <script src="past_exams.js"></script>
+
+  <!-- Bootstrap inline -->
+  <script>
+  // Wait for all scripts then init
+  document.addEventListener('DOMContentLoaded', () => {
+    if (typeof initApp === 'function') initApp();
+  });
+  </script>
+
+</div><!-- /app -->
+</body>
+</html>
